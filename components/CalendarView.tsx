@@ -67,7 +67,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
   }
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-4 md:p-6 transition-colors">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 md:p-6 transition-colors">
       <div className="flex items-center justify-between mb-4">
         <button onClick={() => changeMonth(-1)} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
           <ChevronLeftIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
@@ -77,10 +77,10 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
           <ChevronRightIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
         </button>
       </div>
-      <div className="grid grid-cols-7 gap-1 text-center text-sm text-gray-500 dark:text-gray-400 transition-colors">
+      <div className="grid grid-cols-7 gap-2 md:gap-1 text-center text-[0.7rem] sm:text-sm text-gray-500 dark:text-gray-400 transition-colors">
         {dayNames.map(day => <div key={day} className="font-medium p-2">{day}</div>)}
       </div>
-      <div className="grid grid-cols-7 gap-1">
+      <div className="grid grid-cols-7 gap-2 md:gap-1">
         {Array.from({ length: firstDayOfMonth }).map((_, i) => <div key={`empty-${i}`} className="border rounded-md border-transparent"></div>)}
         {daysInMonth.map(day => {
           const entriesForDay = workLog.getEntriesForDate(day);
@@ -88,17 +88,17 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
           return (
             <div 
               key={day.toString()} 
-              className={`relative border rounded-md p-1 min-h-[100px] md:min-h-[120px] transition-colors ${isToday ? 'border-primary' : 'border-gray-200 dark:border-gray-700'} hover:bg-blue-50 dark:hover:bg-blue-900/40 flex flex-col`}
+              className={`relative border rounded-xl px-2 py-2 min-h-[110px] sm:min-h-[120px] transition-colors ${isToday ? 'border-primary' : 'border-gray-200 dark:border-gray-700'} hover:bg-blue-50 dark:hover:bg-blue-900/40 flex flex-col`}
             >
               <div className={`flex justify-between items-center ${isToday ? 'font-bold' : ''}`}>
-                <span className={`text-sm ${isToday ? 'text-white bg-primary rounded-full h-6 w-6 flex items-center justify-center' : 'text-gray-700 dark:text-gray-200'}`}>
+                <span className={`text-base ${isToday ? 'text-white bg-primary rounded-full h-7 w-7 flex items-center justify-center' : 'text-gray-700 dark:text-gray-200'}`}>
                     {day.getDate()}
                 </span>
                 <button onClick={() => onAddEntry(day)} className="md:hidden text-primary hover:text-blue-700 opacity-50 hover:opacity-100" aria-label={t('app.addEntryAria')}>
                     <PlusIcon className="h-4 w-4" />
                 </button>
               </div>
-              <div className="flex-grow overflow-y-auto text-xs mt-1 space-y-1">
+              <div className="flex-grow overflow-y-auto text-xs mt-2 space-y-1.5">
                 {entriesForDay.map(entry => {
                   const display = getEntryDisplay(entry);
                   return (

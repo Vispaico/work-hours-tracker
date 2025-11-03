@@ -11,13 +11,14 @@ import { useI18n } from './hooks/useI18n';
 import { useAuth } from './contexts/AuthContext';
 import { AuthGate } from './components/AuthGate';
 import { useTheme } from './contexts/ThemeContext';
+import { normalizeToLocalDate, parseISODate } from './utils/dateUtils';
 
 type View = 'calendar' | 'dashboard' | 'settings';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('calendar');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(() => normalizeToLocalDate(new Date()));
   const [editingEntry, setEditingEntry] = useState<WorkEntry | null>(null);
 
   const { user, isEnabled: authEnabled, signOut } = useAuth();
@@ -30,13 +31,13 @@ const App: React.FC = () => {
   }
 
   const openModalForDate = (date: Date) => {
-    setSelectedDate(date);
+    setSelectedDate(normalizeToLocalDate(date));
     setEditingEntry(null);
     setIsModalOpen(true);
   };
   
   const openModalForEdit = (entry: WorkEntry) => {
-    setSelectedDate(new Date(entry.date));
+    setSelectedDate(parseISODate(entry.date));
     setEditingEntry(entry);
     setIsModalOpen(true);
   };
@@ -100,11 +101,14 @@ const App: React.FC = () => {
         </div>
       </header>
       
-      <main className="flex-grow overflow-y-auto p-4 md:p-6 transition-colors">
+      <main className="flex-grow overflow-y-auto px-4 pt-4 pb-28 md:px-6 md:pt-6 md:pb-32 transition-colors">
         {renderView()}
       </main>
 
-      <div className="fixed bottom-16 right-4 z-20">
+      <div
+        className="fixed right-4 z-20"
+        style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
+      >
         <button
           onClick={() => openModalForDate(new Date())}
           className="bg-primary hover:bg-blue-800 text-white rounded-full p-4 shadow-lg transition-transform transform hover:scale-110"
@@ -114,7 +118,7 @@ const App: React.FC = () => {
         </button>
       </div>
 
-      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-t border-t border-gray-200 dark:border-gray-700 flex justify-around h-16 z-10 transition-colors">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-t border-t border-gray-200 dark:border-gray-700 flex justify-around py-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] min-h-[4.5rem] z-10 transition-colors">
         <NavItem view="calendar" label={t('nav.calendar')} icon={<CalendarIcon className="h-6 w-6 mb-1" />} />
         <NavItem view="dashboard" label={t('nav.dashboard')} icon={<ChartBarIcon className="h-6 w-6 mb-1" />} />
         <NavItem view="settings" label={t('nav.settings')} icon={<CogIcon className="h-6 w-6 mb-1" />} />

@@ -4,7 +4,7 @@ import type { Job, WorkEntry, CalculatedTotals, TimePeriod, Currency } from '../
 import { EntryType, DayOfWeek } from '../types';
 import { getFromStorage, saveToStorage } from '../utils/localStorage';
 import { v4 as uuidv4 } from 'uuid';
-import { calculateDuration } from '../utils/dateUtils';
+import { calculateDuration, formatToISODate } from '../utils/dateUtils';
 import { syncService } from '../services/syncService';
 
 const defaultCurrency: Currency = 'USD';
@@ -149,7 +149,7 @@ export const useWorkLog = (userId?: string | null) => {
 
   const getEntriesForDate = useCallback(
     (date: Date) => {
-      const isoDate = date.toISOString().split('T')[0];
+      const isoDate = formatToISODate(date);
       return entries.filter(entry => entry.date === isoDate);
     },
     [entries]
@@ -207,8 +207,8 @@ export const useWorkLog = (userId?: string | null) => {
           break;
       }
 
-      const startStr = startDate.toISOString().split('T')[0];
-      const endStr = endDate.toISOString().split('T')[0];
+      const startStr = formatToISODate(startDate);
+      const endStr = formatToISODate(endDate);
 
       const filteredEntries = entries.filter(entry => {
         const entryDate = entry.date;

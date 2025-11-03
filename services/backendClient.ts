@@ -5,13 +5,18 @@ interface RequestOptions {
 }
 
 const API_URL = import.meta.env.VITE_API_URL as string | undefined;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
 const isConfigured = Boolean(API_URL);
 let authToken: string | null = null;
 
-const jsonHeaders = {
+const jsonHeaders: Record<string, string> = {
   'Content-Type': 'application/json',
 };
+
+if (supabaseAnonKey) {
+  jsonHeaders.apikey = supabaseAnonKey;
+}
 
 async function request<T>(path: string, options: RequestOptions = {}): Promise<T> {
   if (!API_URL) {

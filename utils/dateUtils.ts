@@ -24,7 +24,19 @@ export const isSameDay = (date1: Date, date2: Date): boolean => {
 };
 
 export const formatToISODate = (date: Date): string => {
-  return date.toISOString().split('T')[0];
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+export const normalizeToLocalDate = (date: Date): Date => {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+};
+
+export const parseISODate = (isoDate: string): Date => {
+  const [year, month, day] = isoDate.split('-').map(Number);
+  return new Date((year ?? 0), (month ?? 1) - 1, day ?? 1);
 };
 
 export const getMonthName = (month: number): string => {
