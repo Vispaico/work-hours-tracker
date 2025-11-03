@@ -1,0 +1,5 @@
+{
+  "name": "Work Hours Tracker",
+  "description": "An intuitive application to track working hours, manage multiple jobs, calculate earnings, and get smart insights with AI. Designed for web, iOS, and Android.",
+  "requestFramePermissions": []
+}
