@@ -34,12 +34,14 @@ const translations: Record<Language, TranslationRecord> = {
       save: 'Save',
       edit: 'Edit',
       add: 'Add',
+      delete: 'Delete',
       error: 'An error occurred.',
       totalHours: 'Total: {hours} hours',
     },
     calendar: {
       deleteConfirm: 'Are you sure you want to delete this entry?',
       unknownJob: 'Unknown Job',
+      noEntries: 'No entries for this day yet.',
     },
     dashboard: {
       title: 'Dashboard',
@@ -183,12 +185,14 @@ const translations: Record<Language, TranslationRecord> = {
       save: 'Speichern',
       edit: 'Bearbeiten',
       add: 'Hinzufügen',
+      delete: 'Löschen',
       error: 'Es ist ein Fehler aufgetreten.',
       totalHours: 'Gesamt: {hours} Stunden',
     },
     calendar: {
       deleteConfirm: 'Möchten Sie diesen Eintrag wirklich löschen?',
       unknownJob: 'Unbekannter Job',
+      noEntries: 'Für diesen Tag liegen noch keine Einträge vor.',
     },
     dashboard: {
       title: 'Dashboard',
@@ -332,12 +336,14 @@ const translations: Record<Language, TranslationRecord> = {
       save: 'Lưu',
       edit: 'Chỉnh sửa',
       add: 'Thêm',
+      delete: 'Xóa',
       error: 'Đã xảy ra lỗi.',
       totalHours: 'Tổng: {hours} giờ',
     },
     calendar: {
       deleteConfirm: 'Bạn có chắc muốn xóa mục này không?',
       unknownJob: 'Công việc chưa xác định',
+      noEntries: 'Chưa có mục nào cho ngày này.',
     },
     dashboard: {
       title: 'Bảng điều khiển',
@@ -481,12 +487,14 @@ const translations: Record<Language, TranslationRecord> = {
       save: 'Guardar',
       edit: 'Editar',
       add: 'Añadir',
+      delete: 'Eliminar',
       error: 'Ocurrió un error.',
       totalHours: 'Total: {hours} horas',
     },
     calendar: {
       deleteConfirm: '¿Seguro que deseas eliminar este registro?',
       unknownJob: 'Trabajo desconocido',
+      noEntries: 'Aún no hay registros para este día.',
     },
     dashboard: {
       title: 'Panel',
