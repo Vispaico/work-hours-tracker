@@ -1,4 +1,5 @@
-import type { Job, WorkEntry, ReminderSettings } from '../types';
+import type { Job, WorkEntry, ReminderSettings, Currency } from '../types';
+import { EntryType } from '../types';
 import { backendClient } from './backendClient';
 import { supabase } from './supabaseClient';
 
@@ -8,35 +9,89 @@ interface SyncPayload {
 }
 
 const noop = async () => {};
+const METADATA_KEY = 'workHoursTracker';
 
-const JOB_TABLE = 'work_jobs';
-const ENTRY_TABLE = 'work_entries';
-
-const mapJobRow = (row: any): Job | null => {
-  if (!row) return null;
-  return {
-    id: row.id,
-    name: row.name,
-    hourlyRate: row.hourly_rate,
-    currency: row.currency,
-    schedule: Array.isArray(row.schedule) ? row.schedule : [],
-    userId: row.user_id ?? undefined,
-  } as Job;
+const sanitizeCurrency = (currency: unknown): Currency => {
+  const valid: Currency[] = ['USD', 'EUR', 'VND'];
+  return valid.includes(currency as Currency) ? (currency as Currency) : 'USD';
 };
 
-const mapEntryRow = (row: any): WorkEntry | null => {
-  if (!row) return null;
+const sanitizeJob = (job: any, userId?: string | null): Job | null => {
+  if (!job || typeof job !== 'object') {
+    return null;
+  }
+
+  const { id, name } = job as { id?: unknown; name?: unknown };
+  if (typeof id !== 'string' || typeof name !== 'string') {
+    return null;
+  }
+
+  const hourlyRateValue = Number((job as { hourlyRate?: unknown }).hourlyRate);
+  const scheduleValue = Array.isArray(job.schedule)
+    ? (job.schedule as unknown[]).filter((day): day is number => typeof day === 'number')
+    : [];
+
   return {
-    id: row.id,
-    jobId: row.job_id,
-    date: row.date,
-    entryType: row.entry_type,
-    startTime: row.start_time ?? undefined,
-    endTime: row.end_time ?? undefined,
-    durationHours: row.duration_hours ?? undefined,
-    status: row.status ?? undefined,
-    userId: row.user_id ?? undefined,
-  } as WorkEntry;
+    id,
+    name,
+    hourlyRate: Number.isFinite(hourlyRateValue) ? hourlyRateValue : 0,
+    currency: sanitizeCurrency((job as { currency?: unknown }).currency),
+    schedule: scheduleValue,
+    userId: userId ?? (typeof job.userId === 'string' ? job.userId : undefined),
+  };
+};
+
+const sanitizeEntry = (entry: any, userId?: string | null): WorkEntry | null => {
+  if (!entry || typeof entry !== 'object') {
+    return null;
+  }
+
+  const { id, jobId, date, entryType } = entry as {
+    id?: unknown;
+    jobId?: unknown;
+    date?: unknown;
+    entryType?: unknown;
+  };
+
+  if (typeof id !== 'string' || typeof jobId !== 'string' || typeof date !== 'string' || typeof entryType !== 'string') {
+    return null;
+  }
+
+  const validEntryTypes: EntryType[] = [EntryType.TimeRange, EntryType.Duration, EntryType.Status];
+  if (!validEntryTypes.includes(entryType as EntryType)) {
+    return null;
+  }
+
+  const normalized: WorkEntry = {
+    id,
+    jobId,
+    date,
+    entryType: entryType as EntryType,
+    userId: userId ?? (typeof entry.userId === 'string' ? entry.userId : undefined),
+  };
+
+  if (typeof entry.startTime === 'string') {
+    normalized.startTime = entry.startTime;
+  }
+
+  if (typeof entry.endTime === 'string') {
+    normalized.endTime = entry.endTime;
+  }
+
+  if (typeof entry.durationHours === 'number') {
+    normalized.durationHours = entry.durationHours;
+  } else if (typeof entry.durationHours === 'string') {
+    const parsed = Number(entry.durationHours);
+    if (Number.isFinite(parsed)) {
+      normalized.durationHours = parsed;
+    }
+  }
+
+  if (typeof entry.status === 'string') {
+    normalized.status = entry.status;
+  }
+
+  return normalized;
 };
 
 const fetchInitialData = async (userId?: string | null): Promise<SyncPayload | null> => {
@@ -53,88 +108,77 @@ const fetchInitialData = async (userId?: string | null): Promise<SyncPayload | n
   }
 
   try {
-    const { data: jobsData, error: jobsError } = await supabase
-      .from(JOB_TABLE)
-      .select('*')
-      .eq('user_id', userId)
-      .order('updated_at', { ascending: true });
-
-    if (jobsError) {
-      throw jobsError;
+    const { data, error } = await supabase.auth.getUser();
+    if (error || !data?.user) {
+      if (error) {
+        throw error;
+      }
+      return { jobs: [], entries: [] };
     }
 
-    const { data: entriesData, error: entriesError } = await supabase
-      .from(ENTRY_TABLE)
-      .select('*')
-      .eq('user_id', userId)
-      .order('date', { ascending: true })
-      .order('updated_at', { ascending: true });
-
-    if (entriesError) {
-      throw entriesError;
+    const metadata = (data.user.user_metadata ?? {})[METADATA_KEY];
+    if (!metadata || typeof metadata !== 'object') {
+      return { jobs: [], entries: [] };
     }
 
-    return {
-      jobs: (jobsData ?? []).map(mapJobRow).filter(Boolean) as Job[],
-      entries: (entriesData ?? []).map(mapEntryRow).filter(Boolean) as WorkEntry[],
-    };
-  } catch (error) {
-    console.warn('[sync] Unable to fetch initial data from Supabase', error);
+    const jobs = Array.isArray((metadata as { jobs?: unknown }).jobs)
+      ? ((metadata as { jobs?: unknown[] }).jobs ?? [])
+          .map(job => sanitizeJob(job, userId))
+          .filter(Boolean) as Job[]
+      : [];
+
+    const entries = Array.isArray((metadata as { entries?: unknown }).entries)
+      ? ((metadata as { entries?: unknown[] }).entries ?? [])
+          .map(entry => sanitizeEntry(entry, userId))
+          .filter(Boolean) as WorkEntry[]
+      : [];
+
+    return { jobs, entries };
+  } catch (err) {
+    console.warn('[sync] Unable to fetch data from Supabase metadata', err);
     return null;
   }
 };
 
-const upsertSupabaseRecords = async (
-  table: string,
-  records: Record<string, unknown>[],
-  userId: string
-) => {
-  if (!supabase) {
-    return;
-  }
+const pushData = async (payload: SyncPayload, userId?: string | null): Promise<void> => {
+  if (userId && supabase) {
+    try {
+      const serialized = {
+        jobs: payload.jobs.map(job => ({
+          id: job.id,
+          name: job.name,
+          hourlyRate: job.hourlyRate,
+          currency: job.currency,
+          schedule: job.schedule ?? [],
+        })),
+        entries: payload.entries.map(entry => ({
+          id: entry.id,
+          jobId: entry.jobId,
+          date: entry.date,
+          entryType: entry.entryType,
+          startTime: entry.startTime ?? null,
+          endTime: entry.endTime ?? null,
+          durationHours: entry.durationHours ?? null,
+          status: entry.status ?? null,
+        })),
+        updatedAt: new Date().toISOString(),
+      };
 
-  if (!records.length) {
-    const { error } = await supabase.from(table).delete().eq('user_id', userId);
-    if (error) {
-      console.warn(`[sync] Unable to clear ${table}`, error);
+      const { error } = await supabase.auth.updateUser({
+        data: {
+          [METADATA_KEY]: serialized,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      return;
+    } catch (error) {
+      console.warn('[sync] Unable to persist data to Supabase metadata', error);
+      // fall back to backend if configured
     }
-    return;
-  }
-
-  const upsertResponse = await supabase.from(table).upsert(records, { onConflict: 'id' });
-  if (upsertResponse.error) {
-    console.warn(`[sync] Unable to upsert into ${table}`, upsertResponse.error);
-    return;
-  }
-
-  const ids = records.map(record => String(record.id));
-  const formattedIds = ids.map(id => `'${id.replace(/'/g, "''")}'`).join(',');
-
-  const deleteResponse = await supabase
-    .from(table)
-    .delete()
-    .eq('user_id', userId)
-    .not('id', 'in', `(${formattedIds})`);
-
-  if (deleteResponse.error && deleteResponse.error.code !== 'PGRST116') {
-    console.warn(`[sync] Unable to prune ${table}`, deleteResponse.error);
-  }
-};
-
-const pushJobs = async (jobs: Job[], userId?: string | null): Promise<void> => {
-  if (userId && supabase) {
-    const rows = jobs.map(job => ({
-      id: job.id,
-      user_id: userId,
-      name: job.name,
-      hourly_rate: job.hourlyRate,
-      currency: job.currency,
-      schedule: job.schedule,
-      updated_at: new Date().toISOString(),
-    }));
-
-    await upsertSupabaseRecords(JOB_TABLE, rows, userId);
-    return;
   }
 
   if (!backendClient.isConfigured) {
@@ -142,39 +186,12 @@ const pushJobs = async (jobs: Job[], userId?: string | null): Promise<void> => {
   }
 
   try {
-    await backendClient.post('/sync/jobs', { jobs });
+    await Promise.all([
+      backendClient.post('/sync/jobs', { jobs: payload.jobs }),
+      backendClient.post('/sync/entries', { entries: payload.entries }),
+    ]);
   } catch (error) {
-    console.warn('[sync] Unable to push jobs', error);
-  }
-};
-
-const pushEntries = async (entries: WorkEntry[], userId?: string | null): Promise<void> => {
-  if (userId && supabase) {
-    const rows = entries.map(entry => ({
-      id: entry.id,
-      user_id: userId,
-      job_id: entry.jobId,
-      date: entry.date,
-      entry_type: entry.entryType,
-      start_time: entry.startTime ?? null,
-      end_time: entry.endTime ?? null,
-      duration_hours: entry.durationHours ?? null,
-      status: entry.status ?? null,
-      updated_at: new Date().toISOString(),
-    }));
-
-    await upsertSupabaseRecords(ENTRY_TABLE, rows, userId);
-    return;
-  }
-
-  if (!backendClient.isConfigured) {
-    return noop();
-  }
-
-  try {
-    await backendClient.post('/sync/entries', { entries });
-  } catch (error) {
-    console.warn('[sync] Unable to push entries', error);
+    console.warn('[sync] Unable to push data via backend API', error);
   }
 };
 
@@ -194,7 +211,6 @@ const registerReminder = async (
 
 export const syncService = {
   fetchInitialData,
-  pushJobs,
-  pushEntries,
+  pushData,
   registerReminder,
 };

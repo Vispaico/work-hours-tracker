@@ -106,17 +106,9 @@ export const useWorkLog = (userId?: string | null) => {
     }
 
     const jobsWithUser = jobs.map(job => (job.userId ? job : { ...job, userId }));
-    void syncService.pushJobs(jobsWithUser, userId ?? null);
-  }, [jobs, syncInitialized, userId]);
-
-  useEffect(() => {
-    if (!syncInitialized || !userId) {
-      return;
-    }
-
     const entriesWithUser = entries.map(entry => (entry.userId ? entry : { ...entry, userId }));
-    void syncService.pushEntries(entriesWithUser, userId ?? null);
-  }, [entries, syncInitialized, userId]);
+    void syncService.pushData({ jobs: jobsWithUser, entries: entriesWithUser }, userId ?? null);
+  }, [jobs, entries, syncInitialized, userId]);
 
   const addJob = (job: Omit<Job, 'id'>) => {
     const newJob = normalizeJob({ ...job, id: uuidv4(), userId: userId ?? job.userId } as Job);

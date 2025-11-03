@@ -61,7 +61,11 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
 
   const handleDelete = (e: React.MouseEvent, entryId: string) => {
     e.stopPropagation();
-    if(window.confirm(t('calendar.deleteConfirm'))){
+
+    const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    const shouldConfirm = !isTouchDevice;
+
+    if (!shouldConfirm || window.confirm(t('calendar.deleteConfirm'))){
       workLog.deleteEntry(entryId);
     }
   }

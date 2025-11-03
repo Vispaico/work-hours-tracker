@@ -47,16 +47,21 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
     void notificationService.ensureServiceWorker();
   }, []);
 
-  const applyReminder = async (nextSettings: ReminderSettings, showPermissionWarning = false) => {
+  const applyReminder = async (nextSettings: ReminderSettings) => {
     setReminderUpdating(true);
     setReminderError(null);
 
     try {
       const result = await notificationService.applyReminderSettings(nextSettings, user?.id);
       setReminders(result.settings);
+      const attemptedEnable = nextSettings.enabled;
+      const permissionGranted = result.permission === 'granted';
 
-      if (showPermissionWarning && result.settings.enabled && result.permission !== 'granted') {
-        setReminderError(t('settings.notifications.permissionDenied'));
+      if (attemptedEnable && !permissionGranted) {
+        const messageKey = result.permission === 'denied'
+          ? 'settings.notifications.permissionDenied'
+          : 'settings.notifications.notSupported';
+        setReminderError(t(messageKey));
       }
     } catch (error) {
       console.error('[settings] Failed to update reminder', error);
@@ -76,7 +81,7 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
 
   const handleReminderToggle = async (enabled: boolean) => {
     const next = { ...reminders, enabled };
-    await applyReminder(next, true);
+    await applyReminder(next);
   };
 
   const handleReminderTimeChange = async (time: string) => {

@@ -81,6 +81,7 @@ const translations: Record<Language, TranslationRecord> = {
         reminderLabel: 'Daily Reminder: "Any work today to clock?"',
         reminderNote: 'Reminder scheduled for {time}. Keep this tab running or enable push notifications for best reliability.',
         permissionDenied: 'Notifications are blocked. Please allow notifications in your browser settings.',
+        notSupported: 'Notifications are not supported on this device or browser.',
         updateError: 'Could not update reminder settings. Please try again.',
       },
       language: {
@@ -229,6 +230,7 @@ const translations: Record<Language, TranslationRecord> = {
         reminderLabel: 'Tägliche Erinnerung: „Heute schon gearbeitet?"',
         reminderNote: 'Erinnerung für {time} geplant. Lasse den Tab geöffnet oder erlaube Push-Benachrichtigungen für beste Zuverlässigkeit.',
         permissionDenied: 'Benachrichtigungen sind blockiert. Bitte erlaube Benachrichtigungen in deinen Browser-Einstellungen.',
+        notSupported: 'Benachrichtigungen werden auf diesem Gerät oder Browser nicht unterstützt.',
         updateError: 'Erinnerung konnte nicht aktualisiert werden. Bitte versuche es erneut.',
       },
       language: {
@@ -377,6 +379,7 @@ const translations: Record<Language, TranslationRecord> = {
         reminderLabel: 'Nhắc nhở hằng ngày: “Hôm nay có làm việc không?”',
         reminderNote: 'Đã lên lịch nhắc nhở lúc {time}. Hãy giữ tab mở hoặc bật thông báo đẩy để đảm bảo nhận được.',
         permissionDenied: 'Thông báo đã bị chặn. Vui lòng cho phép thông báo trong cài đặt trình duyệt.',
+        notSupported: 'Thiết bị hoặc trình duyệt này không hỗ trợ thông báo.',
         updateError: 'Không thể cập nhật nhắc nhở. Vui lòng thử lại.',
       },
       language: {
@@ -525,6 +528,7 @@ const translations: Record<Language, TranslationRecord> = {
         reminderLabel: 'Recordatorio diario: "¿Hay trabajo hoy?"',
         reminderNote: 'Recordatorio programado para las {time}. Mantén esta pestaña abierta o permite notificaciones push para mayor fiabilidad.',
         permissionDenied: 'Las notificaciones están bloqueadas. Habilítalas en la configuración del navegador.',
+        notSupported: 'Las notificaciones no son compatibles con este dispositivo o navegador.',
         updateError: 'No se pudo actualizar el recordatorio. Inténtalo de nuevo.',
       },
       language: {
