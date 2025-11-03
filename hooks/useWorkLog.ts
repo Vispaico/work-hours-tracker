@@ -71,7 +71,7 @@ export const useWorkLog = (userId?: string | null) => {
     setSyncInitialized(false);
 
     (async () => {
-      const remote = await syncService.fetchInitialData();
+      const remote = await syncService.fetchInitialData(userId ?? null);
       if (cancelled) {
         return;
       }
@@ -106,7 +106,7 @@ export const useWorkLog = (userId?: string | null) => {
     }
 
     const jobsWithUser = jobs.map(job => (job.userId ? job : { ...job, userId }));
-    void syncService.pushJobs(jobsWithUser);
+    void syncService.pushJobs(jobsWithUser, userId ?? null);
   }, [jobs, syncInitialized, userId]);
 
   useEffect(() => {
@@ -115,7 +115,7 @@ export const useWorkLog = (userId?: string | null) => {
     }
 
     const entriesWithUser = entries.map(entry => (entry.userId ? entry : { ...entry, userId }));
-    void syncService.pushEntries(entriesWithUser);
+    void syncService.pushEntries(entriesWithUser, userId ?? null);
   }, [entries, syncInitialized, userId]);
 
   const addJob = (job: Omit<Job, 'id'>) => {

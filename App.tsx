@@ -105,18 +105,20 @@ const App: React.FC = () => {
         {renderView()}
       </main>
 
-      <div
-        className="fixed right-4 z-20"
-        style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
-      >
-        <button
-          onClick={() => openModalForDate(new Date())}
-          className="bg-primary hover:bg-blue-800 text-white rounded-full p-4 shadow-lg transition-transform transform hover:scale-110"
-          aria-label={t('app.addEntryAria')}
+      {currentView === 'calendar' && (
+        <div
+          className="fixed right-4 z-20"
+          style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}
         >
-          <PlusIcon className="h-8 w-8" />
-        </button>
-      </div>
+          <button
+            onClick={() => openModalForDate(new Date())}
+            className="bg-primary hover:bg-blue-800 text-white rounded-full p-4 shadow-lg transition-transform transform hover:scale-110"
+            aria-label={t('app.addEntryAria')}
+          >
+            <PlusIcon className="h-8 w-8" />
+          </button>
+        </div>
+      )}
 
       <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-t border-t border-gray-200 dark:border-gray-700 flex justify-around py-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] min-h-[4.5rem] z-10 transition-colors">
         <NavItem view="calendar" label={t('nav.calendar')} icon={<CalendarIcon className="h-6 w-6 mb-1" />} />

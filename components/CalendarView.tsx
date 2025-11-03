@@ -77,10 +77,10 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
           <ChevronRightIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
         </button>
       </div>
-      <div className="grid grid-cols-7 gap-2 md:gap-1 text-center text-[0.7rem] sm:text-sm text-gray-500 dark:text-gray-400 transition-colors">
+      <div className="grid grid-cols-7 gap-3 sm:gap-2 md:gap-1 text-center text-[0.7rem] sm:text-sm text-gray-500 dark:text-gray-400 transition-colors">
         {dayNames.map(day => <div key={day} className="font-medium p-2">{day}</div>)}
       </div>
-      <div className="grid grid-cols-7 gap-2 md:gap-1">
+      <div className="grid grid-cols-7 gap-3 sm:gap-2 md:gap-1">
         {Array.from({ length: firstDayOfMonth }).map((_, i) => <div key={`empty-${i}`} className="border rounded-md border-transparent"></div>)}
         {daysInMonth.map(day => {
           const entriesForDay = workLog.getEntriesForDate(day);
@@ -88,17 +88,17 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
           return (
             <div 
               key={day.toString()} 
-              className={`relative border rounded-xl px-2 py-2 min-h-[110px] sm:min-h-[120px] transition-colors ${isToday ? 'border-primary' : 'border-gray-200 dark:border-gray-700'} hover:bg-blue-50 dark:hover:bg-blue-900/40 flex flex-col`}
+              className={`relative border rounded-xl px-3 py-3 min-h-[120px] sm:min-h-[130px] transition-colors ${isToday ? 'border-primary' : 'border-gray-200 dark:border-gray-700'} hover:bg-blue-50 dark:hover:bg-blue-900/40 flex flex-col`}
             >
               <div className={`flex justify-between items-center ${isToday ? 'font-bold' : ''}`}>
-                <span className={`text-base ${isToday ? 'text-white bg-primary rounded-full h-7 w-7 flex items-center justify-center' : 'text-gray-700 dark:text-gray-200'}`}>
+                <span className={`text-base sm:text-lg ${isToday ? 'text-white bg-primary rounded-full h-8 w-8 flex items-center justify-center' : 'text-gray-700 dark:text-gray-200'}`}>
                     {day.getDate()}
                 </span>
                 <button onClick={() => onAddEntry(day)} className="md:hidden text-primary hover:text-blue-700 opacity-50 hover:opacity-100" aria-label={t('app.addEntryAria')}>
                     <PlusIcon className="h-4 w-4" />
                 </button>
               </div>
-              <div className="flex-grow overflow-y-auto text-xs mt-2 space-y-1.5">
+              <div className="flex-grow overflow-y-auto text-xs sm:text-sm mt-3 space-y-2 pr-1">
                 {entriesForDay.map(entry => {
                   const display = getEntryDisplay(entry);
                   return (
@@ -109,8 +109,12 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
                     >
                         <p className="font-semibold truncate">{display.jobName}</p>
                         <p className="truncate">{display.text}</p>
-                        <button onClick={(e) => handleDelete(e, entry.id)} className="absolute top-0 right-0 p-0.5 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                            <TrashIcon className="h-3 w-3 text-white"/>
+                        <button
+                          onClick={(e) => handleDelete(e, entry.id)}
+                          className="absolute top-0 right-0 p-1 bg-red-500 rounded-full text-white opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100"
+                          aria-label={t('calendar.deleteConfirm')}
+                        >
+                            <TrashIcon className="h-4 w-4"/>
                         </button>
                     </div>
                   );
