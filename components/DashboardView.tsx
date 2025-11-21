@@ -12,11 +12,9 @@ const StatCard: React.FC<{ title: string; value: string; }> = ({ title, value })
   </div>
 );
 
-const currencySymbols: Record<Currency, string> = {
-  USD: '$',
-  EUR: '€',
-  VND: '₫',
-};
+import { currencySymbolMap } from '../utils/constants';
+
+const currencySymbols = currencySymbolMap;
 
 export const DashboardView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
   const [period, setPeriod] = useState<TimePeriod>('month');
@@ -24,7 +22,7 @@ export const DashboardView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
   const [date, setDate] = useState(new Date()); // For navigating periods
   const { t, language } = useI18n();
 
-  const totals = useMemo(() => 
+  const totals = useMemo(() =>
     workLog.calculateTotals(period, date, selectedJobId),
     [workLog, period, date, selectedJobId]
   );
@@ -32,11 +30,11 @@ export const DashboardView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
   const numberFormatter = useMemo(() => new Intl.NumberFormat(language, { minimumFractionDigits: 2, maximumFractionDigits: 2 }), [language]);
   const integerFormatter = useMemo(() => new Intl.NumberFormat(language, { maximumFractionDigits: 0 }), [language]);
   const currencyFormatter = useMemo(() => new Intl.NumberFormat(language, { minimumFractionDigits: 2, maximumFractionDigits: 2 }), [language]);
-  
+
   const chartData = useMemo(() => {
     return workLog.jobs.map(job => ({
-        name: job.name,
-        Hours: totals.hoursByJob[job.id] || 0
+      name: job.name,
+      Hours: totals.hoursByJob[job.id] || 0
     }));
   }, [totals, workLog.jobs]);
 
@@ -92,7 +90,7 @@ export const DashboardView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">{t('dashboard.filters.date')}</label>
-            <input 
+            <input
               type="date"
               value={date.toISOString().split('T')[0]}
               onChange={handleDateChange}

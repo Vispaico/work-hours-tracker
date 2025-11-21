@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { utils, writeFile } from 'xlsx';
 import { useI18n } from '../hooks/useI18n';
 import type { WorkLog } from '../hooks/useWorkLog';
-import type { Job } from '../types';
 import { XMarkIcon } from './shared/Icons';
 
 interface ExportModalProps {
