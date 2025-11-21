@@ -5,6 +5,7 @@ import { syncService } from './syncService';
 const REMINDER_STORAGE_KEY = 'work_reminder_settings';
 const DEFAULT_REMINDER: ReminderSettings = {
   enabled: false,
+  emailEnabled: false,
   time: '19:00',
   lastScheduledAt: null,
 };

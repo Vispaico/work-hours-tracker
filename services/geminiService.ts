@@ -17,9 +17,9 @@ const logWorkEntryFunctionDeclaration: FunctionDeclaration = {
   parameters: {
     type: Type.OBJECT,
     properties: {
-      jobName: { 
-        type: Type.STRING, 
-        description: 'The name of the job the user worked on. e.g., "Job 1", "Freelance Project"' 
+      jobName: {
+        type: Type.STRING,
+        description: 'The name of the job the user worked on. e.g., "Job 1", "Freelance Project"'
       },
       date: {
         type: Type.STRING,
@@ -61,7 +61,7 @@ export const parseWorkLogWithGemini = async (prompt: string) => {
       Analyze the user's prompt carefully to extract all necessary parameters.
       User prompt: "${prompt}"`,
       config: {
-        tools: [{functionDeclarations: [logWorkEntryFunctionDeclaration]}],
+        tools: [{ functionDeclarations: [logWorkEntryFunctionDeclaration] }],
       },
     });
 
@@ -77,6 +77,9 @@ export const parseWorkLogWithGemini = async (prompt: string) => {
 
   } catch (error) {
     console.error("Error calling Gemini API:", error);
+    if (error instanceof Error) {
+      throw error;
+    }
     throw new Error("Failed to communicate with the AI service.");
   }
 };

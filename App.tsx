@@ -35,7 +35,7 @@ const App: React.FC = () => {
     setEditingEntry(null);
     setIsModalOpen(true);
   };
-  
+
   const openModalForEdit = (entry: WorkEntry) => {
     setSelectedDate(parseISODate(entry.date));
     setEditingEntry(entry);
@@ -63,9 +63,8 @@ const App: React.FC = () => {
   const NavItem = ({ view, label, icon }: { view: View, label: string, icon: React.ReactNode }) => (
     <button
       onClick={() => setCurrentView(view)}
-      className={`flex flex-col items-center justify-center w-full pt-2 pb-1 text-xs transition-colors duration-200 ${
-        currentView === view ? 'text-primary' : 'text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary'
-      }`}
+      className={`flex flex-col items-center justify-center w-full pt-2 pb-1 text-xs transition-colors duration-200 ${currentView === view ? 'text-primary' : 'text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary'
+        }`}
     >
       {icon}
       <span>{label}</span>
@@ -78,6 +77,11 @@ const App: React.FC = () => {
         <div className="flex items-center justify-between gap-4">
           <h1 className="text-2xl font-bold text-dark dark:text-gray-100 text-center flex-1 md:text-left transition-colors">{t('app.title')}</h1>
           <div className="flex items-center space-x-3">
+            {!authEnabled && (
+              <span className="px-2 py-1 rounded-md bg-yellow-100 text-yellow-800 text-xs font-medium border border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-200 dark:border-yellow-800">
+                Local Mode
+              </span>
+            )}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors"
@@ -100,7 +104,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </header>
-      
+
       <main className="flex-grow overflow-y-auto px-4 pt-4 pb-28 md:px-6 md:pt-6 md:pb-32 transition-colors">
         {renderView()}
       </main>

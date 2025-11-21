@@ -90,9 +90,12 @@ export const useWorkLog = (userId?: string | null) => {
             remote.entries.map(entry => ({ ...entry, userId: userId ?? entry.userId }))
           );
         }
+        setSyncInitialized(true);
+      } else {
+        // Fetch failed (e.g. network error or auth error).
+        // Do NOT enable sync to prevent overwriting cloud data with empty local state.
+        console.warn('[useWorkLog] Initial sync failed. Sync disabled to protect data.');
       }
-
-      setSyncInitialized(true);
     })();
 
     return () => {
@@ -154,8 +157,11 @@ export const useWorkLog = (userId?: string | null) => {
 
   const getEntryHours = useCallback((entry: WorkEntry): number => {
     switch (entry.entryType) {
-      case EntryType.TimeRange:
-        return calculateDuration(entry.startTime!, entry.endTime!);
+      case EntryType.TimeRange: {
+        const rawDuration = calculateDuration(entry.startTime!, entry.endTime!);
+        const breakHours = (entry.breakMinutes || 0) / 60;
+        return Math.max(0, rawDuration - breakHours);
+      }
       case EntryType.Duration:
         return entry.durationHours || 0;
       case EntryType.Status:

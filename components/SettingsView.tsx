@@ -1,4 +1,3 @@
-
 import React, { useEffect, useMemo, useState } from 'react';
 import type { WorkLog } from '../hooks/useWorkLog';
 import { DayOfWeek, type Job, type Language, type Currency, type ReminderSettings } from '../types';
@@ -10,13 +9,51 @@ import { useAuth } from '../contexts/AuthContext';
 const currencyOptions: { value: Currency; label: string; symbol: string }[] = [
   { value: 'USD', label: 'USD', symbol: '$' },
   { value: 'EUR', label: 'EUR', symbol: '€' },
+  { value: 'GBP', label: 'GBP', symbol: '£' },
+  { value: 'JPY', label: 'JPY', symbol: '¥' },
+  { value: 'CNY', label: 'CNY', symbol: '¥' },
+  { value: 'KRW', label: 'KRW', symbol: '₩' },
+  { value: 'INR', label: 'INR', symbol: '₹' },
+  { value: 'RUB', label: 'RUB', symbol: '₽' },
+  { value: 'TRY', label: 'TRY', symbol: '₺' },
+  { value: 'BRL', label: 'BRL', symbol: 'R$' },
+  { value: 'CAD', label: 'CAD', symbol: 'C$' },
+  { value: 'AUD', label: 'AUD', symbol: 'A$' },
+  { value: 'CHF', label: 'CHF', symbol: 'Fr' },
+  { value: 'SEK', label: 'SEK', symbol: 'kr' },
+  { value: 'NOK', label: 'NOK', symbol: 'kr' },
+  { value: 'DKK', label: 'DKK', symbol: 'kr' },
+  { value: 'PLN', label: 'PLN', symbol: 'zł' },
+  { value: 'MXN', label: 'MXN', symbol: '$' },
+  { value: 'IDR', label: 'IDR', symbol: 'Rp' },
+  { value: 'THB', label: 'THB', symbol: '฿' },
   { value: 'VND', label: 'VND', symbol: '₫' },
-];
+  { value: 'MYR', label: 'MYR', symbol: 'RM' },
+  { value: 'PHP', label: 'PHP', symbol: '₱' },
+  { value: 'SGD', label: 'SGD', symbol: 'S$' },
+  { value: 'HKD', label: 'HKD', symbol: 'HK$' },
+  { value: 'NZD', label: 'NZD', symbol: 'NZ$' },
+  { value: 'ZAR', label: 'ZAR', symbol: 'R' },
+  { value: 'SAR', label: 'SAR', symbol: '﷼' },
+  { value: 'AED', label: 'AED', symbol: 'د.إ' },
+  { value: 'ARS', label: 'ARS', symbol: '$' },
+  { value: 'CLP', label: 'CLP', symbol: '$' },
+  { value: 'COP', label: 'COP', symbol: '$' },
+  { value: 'EGP', label: 'EGP', symbol: 'E£' },
+  { value: 'ILS', label: 'ILS', symbol: '₪' },
+  { value: 'TWD', label: 'TWD', symbol: 'NT$' },
+] as { value: Currency; label: string; symbol: string }[];
 
-const currencySymbolMap = currencyOptions.reduce<Record<Currency, string>>((acc, option) => {
+const sortedCurrencyOptions = currencyOptions.sort((a, b) => a.label.localeCompare(b.label));
+
+const currencySymbolMap = sortedCurrencyOptions.reduce<Record<Currency, string>>((acc, option) => {
   acc[option.value] = option.symbol;
   return acc;
 }, {} as Record<Currency, string>);
+
+import { ExportModal } from './ExportModal';
+
+// ... (imports)
 
 export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
   const { t, language, setLanguage, languageOptions: availableLanguages } = useI18n();
@@ -26,21 +63,22 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
   const [reminders, setReminders] = useState<ReminderSettings>(() => notificationService.loadReminderSettings());
   const [reminderUpdating, setReminderUpdating] = useState(false);
   const [reminderError, setReminderError] = useState<string | null>(null);
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   const dayOptions = useMemo(() => {
-      const shortFormatter = new Intl.DateTimeFormat(language, { weekday: 'short' });
-      const longFormatter = new Intl.DateTimeFormat(language, { weekday: 'long' });
-      return (Object.values(DayOfWeek) as Array<DayOfWeek | string>)
-        .filter((value): value is DayOfWeek => typeof value === 'number')
-        .map((value) => {
-          const reference = new Date(Date.UTC(2021, 7, 1));
-          reference.setUTCDate(reference.getUTCDate() + value);
-          return {
-            value,
-            short: shortFormatter.format(reference),
-            full: longFormatter.format(reference),
-          };
-        });
+    const shortFormatter = new Intl.DateTimeFormat(language, { weekday: 'short' });
+    const longFormatter = new Intl.DateTimeFormat(language, { weekday: 'long' });
+    return (Object.values(DayOfWeek) as Array<DayOfWeek | string>)
+      .filter((value): value is DayOfWeek => typeof value === 'number')
+      .map((value) => {
+        const reference = new Date(Date.UTC(2021, 7, 1));
+        reference.setUTCDate(reference.getUTCDate() + value);
+        return {
+          value,
+          short: shortFormatter.format(reference),
+          full: longFormatter.format(reference),
+        };
+      });
   }, [language]);
 
   useEffect(() => {
@@ -79,13 +117,10 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id]);
 
-  const handleReminderToggle = async (enabled: boolean) => {
-    const next = { ...reminders, enabled };
-    await applyReminder(next);
-  };
-
-  const handleReminderTimeChange = async (time: string) => {
-    const next = { ...reminders, time };
+  const handleReminderChange = async (changes: Partial<ReminderSettings>) => {
+    const next = { ...reminders, ...changes };
+    // If enabling email, ensure enabled is false if push is not supported/wanted, or keep as is.
+    // For now, just update state and apply.
     setReminders(next);
     await applyReminder(next);
   };
@@ -93,7 +128,7 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
   const handleEditJob = (job: Job) => {
     setEditingJob({ ...job });
   };
-  
+
   const handleSaveJob = () => {
     if (editingJob) {
       workLog.updateJob(editingJob);
@@ -110,12 +145,12 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
   };
 
   const handleScheduleChange = (day: DayOfWeek) => {
-      if(editingJob) {
-          const newSchedule = editingJob.schedule.includes(day)
-            ? editingJob.schedule.filter(d => d !== day)
-            : [...editingJob.schedule, day];
-          setEditingJob({ ...editingJob, schedule: newSchedule });
-      }
+    if (editingJob) {
+      const newSchedule = editingJob.schedule.includes(day)
+        ? editingJob.schedule.filter(d => d !== day)
+        : [...editingJob.schedule, day];
+      setEditingJob({ ...editingJob, schedule: newSchedule });
+    }
   }
 
   return (
@@ -155,18 +190,17 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
                   <div>
                     <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">{t('settings.jobs.schedule')}</p>
                     <div className="flex space-x-1 flex-wrap gap-1">
-                        {dayOptions.map(({ value, short, full }) => (
-                            <button
-                                key={value}
-                                onClick={() => handleScheduleChange(value)}
-                                className={`h-8 w-8 rounded-full text-xs font-bold transition-colors ${
-                                    editingJob.schedule.includes(value) ? 'bg-primary text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
-                                }`}
-                                title={full}
-                            >
-                                {short}
-                            </button>
-                        ))}
+                      {dayOptions.map(({ value, short, full }) => (
+                        <button
+                          key={value}
+                          onClick={() => handleScheduleChange(value)}
+                          className={`h-8 w-8 rounded-full text-xs font-bold transition-colors ${editingJob.schedule.includes(value) ? 'bg-primary text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
+                            }`}
+                          title={full}
+                        >
+                          {short}
+                        </button>
+                      ))}
                     </div>
                   </div>
                   <div className="flex justify-end space-x-2">
@@ -181,10 +215,10 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
                     <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors">{`${t('settings.jobs.rateDisplay', { amount: `${currencySymbolMap[job.currency]}${job.hourlyRate.toFixed(2)}` })} (${job.currency})`}</p>
                   </div>
                   <div className="flex items-center space-x-2">
-                     <button onClick={() => handleEditJob(job)} className="px-3 py-1 bg-secondary text-white rounded-md text-sm">{t('common.edit')}</button>
-                     <button onClick={() => workLog.deleteJob(job.id)} className="p-2 text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20 rounded-full transition-colors">
-                         <TrashIcon className="h-5 w-5"/>
-                     </button>
+                    <button onClick={() => handleEditJob(job)} className="px-3 py-1 bg-secondary text-white rounded-md text-sm">{t('common.edit')}</button>
+                    <button onClick={() => workLog.deleteJob(job.id)} className="p-2 text-red-500 hover:bg-red-100 dark:hover:bg-red-500/20 rounded-full transition-colors">
+                      <TrashIcon className="h-5 w-5" />
+                    </button>
                   </div>
                 </div>
               )}
@@ -192,32 +226,32 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
           ))}
         </div>
         <form onSubmit={handleAddJob} className="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4 space-y-2 transition-colors">
-            <h3 className="font-semibold">{t('settings.jobs.addTitle')}</h3>
-            <input
-                type="text"
-                value={newJob.name}
-                onChange={(e) => setNewJob({ ...newJob, name: e.target.value })}
-                className="form-input w-full dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
-                placeholder={t('settings.jobs.nameLabel')}
-            />
-            <input
-                type="number"
-                value={newJob.hourlyRate}
-                onChange={(e) => setNewJob({ ...newJob, hourlyRate: e.target.value })}
-                className="form-input w-full dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
-                placeholder={t('settings.jobs.rateLabel')}
-            />
-            <select
-                value={newJob.currency}
-                onChange={(e) => setNewJob({ ...newJob, currency: e.target.value as Currency })}
-                className="form-select w-full dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
-                aria-label={t('settings.jobs.currencyLabel')}
-            >
-                {currencyOptions.map(option => (
-                    <option key={option.value} value={option.value}>{option.label}</option>
-                ))}
-            </select>
-            <button type="submit" className="w-full px-4 py-2 bg-accent text-white rounded-md">{t('settings.jobs.addButton')}</button>
+          <h3 className="font-semibold">{t('settings.jobs.addTitle')}</h3>
+          <input
+            type="text"
+            value={newJob.name}
+            onChange={(e) => setNewJob({ ...newJob, name: e.target.value })}
+            className="form-input w-full dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+            placeholder={t('settings.jobs.nameLabel')}
+          />
+          <input
+            type="number"
+            value={newJob.hourlyRate}
+            onChange={(e) => setNewJob({ ...newJob, hourlyRate: e.target.value })}
+            className="form-input w-full dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+            placeholder={t('settings.jobs.rateLabel')}
+          />
+          <select
+            value={newJob.currency}
+            onChange={(e) => setNewJob({ ...newJob, currency: e.target.value as Currency })}
+            className="form-select w-full dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+            aria-label={t('settings.jobs.currencyLabel')}
+          >
+            {currencyOptions.map(option => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
+          </select>
+          <button type="submit" className="w-full px-4 py-2 bg-accent text-white rounded-md">{t('settings.jobs.addButton')}</button>
         </form>
       </div>
 
@@ -228,7 +262,7 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
           id="language-select"
           value={language}
           onChange={(e) => setLanguage(e.target.value as Language)}
-          className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+          className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-hidden focus:ring-primary focus:border-primary sm:text-sm rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
         >
           {availableLanguages.map(option => (
             <option key={option.code} value={option.code}>{option.label}</option>
@@ -236,37 +270,83 @@ export const SettingsView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
         </select>
       </div>
 
-      {/* Notification Settings */}
+      {/* Data Management */}
       <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow transition-colors">
-        <h2 className="text-xl font-bold text-dark dark:text-gray-100 mb-4 transition-colors">{t('settings.notifications.title')}</h2>
-        <div className="flex items-center justify-between">
-          <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('settings.notifications.reminderLabel')}</span>
-          <div className="flex items-center space-x-4">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors">Data Management</h2>
+        <div className="space-y-4">
+          <button
+            onClick={() => setIsExportModalOpen(true)}
+            className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+          >
+            <span>Export to Excel</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Notifications */}
+      <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow transition-colors">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors">{t('settings.notifications.title')}</h2>
+
+        <div className="space-y-4">
+          {/* Push Notifications */}
+          <div className="flex items-center justify-between">
+            <div>
+              <label className="font-medium text-gray-900 dark:text-gray-100">Push Notifications</label>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Receive notifications on this device</p>
+            </div>
+            <label className="relative inline-flex items-center cursor-pointer">
               <input
-                type="time"
-                value={reminders.time}
-                onChange={(e) => void handleReminderTimeChange(e.target.value)}
-                disabled={!reminders.enabled || reminderUpdating}
-                className="form-input disabled:opacity-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
-                aria-label={t('settings.notifications.reminderLabel')}
+                type="checkbox"
+                className="sr-only peer"
+                checked={reminders.enabled}
+                onChange={(e) => handleReminderChange({ enabled: e.target.checked })}
+                disabled={reminderUpdating}
               />
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={reminders.enabled}
-                  onChange={(e) => void handleReminderToggle(e.target.checked)}
-                  disabled={reminderUpdating}
-                  className="sr-only peer"
-                />
-                <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 dark:after:border-gray-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
-              </label>
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          {/* Email Reminders */}
+          <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
+            <div>
+              <label className="font-medium text-gray-900 dark:text-gray-100">Email Reminders</label>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Receive daily summary via email</p>
+            </div>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                className="sr-only peer"
+                checked={reminders.emailEnabled}
+                onChange={(e) => handleReminderChange({ emailEnabled: e.target.checked })}
+                disabled={reminderUpdating}
+              />
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          {/* Time Picker */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              {t('settings.notifications.reminderLabel')}
+            </label>
+            <input
+              type="time"
+              value={reminders.time}
+              onChange={(e) => handleReminderChange({ time: e.target.value })}
+              disabled={reminderUpdating || (!reminders.enabled && !reminders.emailEnabled)}
+              className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50"
+              aria-label={t('settings.notifications.reminderLabel')}
+            />
           </div>
         </div>
-        {reminders.enabled && !reminderError && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 transition-colors">{t('settings.notifications.reminderNote', { time: reminders.time })}</p>
-        )}
         {reminderError && <p className="text-sm text-red-500 mt-2">{reminderError}</p>}
       </div>
+
+      <ExportModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
+        workLog={workLog}
+      />
     </div>
   );
 };

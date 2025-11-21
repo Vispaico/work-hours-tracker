@@ -69,7 +69,7 @@ export const DashboardView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
             <select
               value={period}
               onChange={(e) => setPeriod(e.target.value as TimePeriod)}
-              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-hidden focus:ring-primary focus:border-primary sm:text-sm rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
             >
               <option value="day">{t('dashboard.periodOptions.day')}</option>
               <option value="week">{t('dashboard.periodOptions.week')}</option>
@@ -82,7 +82,7 @@ export const DashboardView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
             <select
               value={selectedJobId}
               onChange={(e) => setSelectedJobId(e.target.value)}
-              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-hidden focus:ring-primary focus:border-primary sm:text-sm rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
             >
               <option value="all">{t('dashboard.allJobs')}</option>
               {workLog.jobs.map(job => (
@@ -96,7 +96,7 @@ export const DashboardView: React.FC<{ workLog: WorkLog }> = ({ workLog }) => {
               type="date"
               value={date.toISOString().split('T')[0]}
               onChange={handleDateChange}
-              className="mt-1 block w-full pl-3 pr-4 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+              className="mt-1 block w-full pl-3 pr-4 py-2 text-base border-gray-300 focus:outline-hidden focus:ring-primary focus:border-primary sm:text-sm rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
             />
           </div>
         </div>
