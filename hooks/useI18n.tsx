@@ -172,6 +172,39 @@ const translations: Record<Language, TranslationRecord> = {
       heroHeadline: 'Own your time. Work smarter.',
       heroSubheadline: 'Log shifts, track earnings, and keep every device in sync with one beautiful workspace.',
       heroCta: 'Create your free account',
+      metrics: {
+        multiJobs: {
+          label: 'Jobs logged per day',
+          value: '3+',
+          detail: 'Color-coded dots keep overlapping gigs obvious.'
+        },
+        accuracy: {
+          label: 'Accuracy boost',
+          value: '98%',
+          detail: 'Automatic math removes spreadsheet errors.'
+        },
+        sync: {
+          label: 'Platforms covered',
+          value: 'Web · iOS · Android',
+          detail: 'One sign-in, every device up to date.'
+        },
+      },
+      whatTitle: 'What you get on day one',
+      what: {
+        planner: {
+          title: 'Visual shift planner',
+          description: 'A calendar that shows every job at once so you always know where time goes.'
+        },
+        capture: {
+          title: 'Frictionless capture',
+          description: 'Tap, drag or type natural language and let AI turn it into structured entries.'
+        },
+        earnings: {
+          title: 'Automatic earnings math',
+          description: 'Hourly rates, currencies and overtime roll up instantly for every job.'
+        },
+      },
+      whyTitle: 'Why crews track hours with Work Hours Tracker',
       features: {
         tracking: {
           title: 'Instant time tracking',

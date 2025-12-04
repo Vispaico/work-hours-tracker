@@ -6,9 +6,10 @@ import { supabase } from './supabaseClient';
 interface SyncPayload {
   jobs: Job[];
   entries: WorkEntry[];
+  reminderSettings?: ReminderSettings;
 }
 
-const noop = async () => {};
+const noop = async () => { };
 const METADATA_KEY = 'workHoursTracker';
 
 const sanitizeCurrency = (currency: unknown): Currency => {
@@ -123,17 +124,19 @@ const fetchInitialData = async (userId?: string | null): Promise<SyncPayload | n
 
     const jobs = Array.isArray((metadata as { jobs?: unknown }).jobs)
       ? ((metadata as { jobs?: unknown[] }).jobs ?? [])
-          .map(job => sanitizeJob(job, userId))
-          .filter(Boolean) as Job[]
+        .map(job => sanitizeJob(job, userId))
+        .filter(Boolean) as Job[]
       : [];
 
     const entries = Array.isArray((metadata as { entries?: unknown }).entries)
       ? ((metadata as { entries?: unknown[] }).entries ?? [])
-          .map(entry => sanitizeEntry(entry, userId))
-          .filter(Boolean) as WorkEntry[]
+        .map(entry => sanitizeEntry(entry, userId))
+        .filter(Boolean) as WorkEntry[]
       : [];
 
-    return { jobs, entries };
+    const reminderSettings = (metadata as { reminderSettings?: unknown }).reminderSettings as ReminderSettings | undefined;
+
+    return { jobs, entries, reminderSettings };
   } catch (err) {
     console.warn('[sync] Unable to fetch data from Supabase metadata', err);
     return null;
@@ -143,6 +146,10 @@ const fetchInitialData = async (userId?: string | null): Promise<SyncPayload | n
 const pushData = async (payload: SyncPayload, userId?: string | null): Promise<void> => {
   if (userId && supabase) {
     try {
+      // We need to fetch existing metadata to preserve reminderSettings if not provided in payload,
+      // OR we assume payload has everything.
+      // Usually pushData is called with full state.
+
       const serialized = {
         jobs: payload.jobs.map(job => ({
           id: job.id,
@@ -161,6 +168,7 @@ const pushData = async (payload: SyncPayload, userId?: string | null): Promise<v
           durationHours: entry.durationHours ?? null,
           status: entry.status ?? null,
         })),
+        reminderSettings: payload.reminderSettings,
         updatedAt: new Date().toISOString(),
       };
 
@@ -189,6 +197,7 @@ const pushData = async (payload: SyncPayload, userId?: string | null): Promise<v
     await Promise.all([
       backendClient.post('/sync/jobs', { jobs: payload.jobs }),
       backendClient.post('/sync/entries', { entries: payload.entries }),
+      // Backend might not support reminderSettings yet, but we are focusing on Supabase
     ]);
   } catch (error) {
     console.warn('[sync] Unable to push data via backend API', error);
@@ -198,6 +207,31 @@ const pushData = async (payload: SyncPayload, userId?: string | null): Promise<v
 const registerReminder = async (
   settings: ReminderSettings & { subscription?: PushSubscriptionJSON | null; userId?: string | null }
 ) => {
+  const { userId, ...rest } = settings;
+
+  if (userId && supabase) {
+    try {
+      // Fetch current metadata to merge
+      const { data: userData } = await supabase.auth.getUser();
+      const currentMetadata = (userData.user?.user_metadata ?? {})[METADATA_KEY] || {};
+
+      const updatedMetadata = {
+        ...currentMetadata,
+        reminderSettings: rest,
+        updatedAt: new Date().toISOString(),
+      };
+
+      await supabase.auth.updateUser({
+        data: {
+          [METADATA_KEY]: updatedMetadata,
+        },
+      });
+      return;
+    } catch (error) {
+      console.warn('[sync] Unable to register reminder preference to Supabase', error);
+    }
+  }
+
   if (!backendClient.isConfigured) {
     return noop();
   }

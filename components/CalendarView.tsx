@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 import type { WorkLog } from '../hooks/useWorkLog';
 import type { WorkEntry } from '../types';
 import { getDaysInMonth, getFirstDayOfMonth, isSameDay } from '../utils/dateUtils';
+import { getJobColor } from '../utils/colorUtils';
 import { ChevronLeftIcon, ChevronRightIcon, PlusIcon, TrashIcon, XMarkIcon } from './shared/Icons';
 import { useI18n } from '../hooks/useI18n';
 
@@ -128,9 +129,14 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
                 {week.map((day, dayIndex) => {
                   if (!day) return <div key={`empty-${weekIndex}-${dayIndex}`} className="aspect-square"></div>;
 
+                  const entriesForDay = workLog.getEntriesForDate(day);
+                  const jobIndicators = Array.from(new Set(entriesForDay.map(entry => entry.jobId))).map(jobId => ({
+                    jobId,
+                    color: getJobColor(jobId),
+                  }));
                   const isToday = isSameDay(day, new Date());
                   const isFocused = focusedDay ? isSameDay(day, focusedDay) : false;
-                  const hasEntries = workLog.getEntriesForDate(day).length > 0;
+                  const hasEntries = jobIndicators.length > 0;
 
                   return (
                     <div key={day.toString()} className="flex justify-center items-center aspect-square md:aspect-auto md:h-full">
@@ -151,12 +157,28 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ workLog, onAddEntry,
                         <span className="z-10">{day.getDate()}</span>
                         {/* Entry Indicator */}
                         {hasEntries && !isFocused && (
-                          <span className={`
-                            absolute rounded-full
-                            w-1.5 h-1.5 bottom-1 left-1/2 transform -translate-x-1/2
-                            md:w-2 md:h-2 md:top-2 md:right-2 md:bottom-auto md:left-auto md:translate-x-0
-                            ${isToday ? 'bg-primary' : 'bg-blue-500'}
-                          `}></span>
+                          <div
+                            className={`
+                              pointer-events-none absolute flex items-center justify-center gap-0.5
+                              bottom-1 left-1/2 -translate-x-1/2
+                              md:top-2 md:right-2 md:bottom-auto md:left-auto md:translate-x-0
+                            `}
+                          >
+                            {jobIndicators.slice(0, 4).map(({ jobId, color }) => (
+                              <span
+                                key={jobId}
+                                className="block rounded-full w-1.5 h-1.5 md:w-2 md:h-2"
+                                style={{ backgroundColor: color }}
+                              />
+                            ))}
+                            {jobIndicators.length > 4 && (
+                              <span
+                                className="block rounded-full w-1.5 h-1.5 md:w-2 md:h-2 bg-gray-400"
+                                aria-hidden="true"
+                                title={`+${jobIndicators.length - 4}`}
+                              />
+                            )}
+                          </div>
                         )}
                       </button>
                     </div>
