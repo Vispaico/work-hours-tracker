@@ -78,23 +78,30 @@ export const useWorkLog = (userId?: string | null) => {
 
       if (remote) {
         if (Array.isArray(remote.jobs)) {
-          setJobs(
-            remote.jobs.map(job =>
-              normalizeJob({ ...job, userId: userId ?? job.userId } as Job)
-            )
-          );
+          const normalizedJobs = remote.jobs
+            .map(job => normalizeJob({ ...job, userId: userId ?? job.userId } as Job));
+
+          setJobs(prev => {
+            if (normalizedJobs.length === 0 && prev.length > 0) {
+              return prev;
+            }
+            return normalizedJobs;
+          });
         }
 
         if (Array.isArray(remote.entries)) {
-          setEntries(
-            remote.entries.map(entry => ({ ...entry, userId: userId ?? entry.userId }))
-          );
+          const normalizedEntries = remote.entries.map(entry => ({ ...entry, userId: userId ?? entry.userId }));
+          setEntries(prev => {
+            if (normalizedEntries.length === 0 && prev.length > 0) {
+              return prev;
+            }
+            return normalizedEntries;
+          });
         }
         setSyncInitialized(true);
       } else {
-        // Fetch failed (e.g. network error or auth error).
-        // Do NOT enable sync to prevent overwriting cloud data with empty local state.
-        console.warn('[useWorkLog] Initial sync failed. Sync disabled to protect data.');
+        console.warn('[useWorkLog] Initial sync failed. Continuing with local data.');
+        setSyncInitialized(true);
       }
     })();
 

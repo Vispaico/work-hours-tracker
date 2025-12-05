@@ -1,5 +1,6 @@
 import type { Job, WorkEntry, ReminderSettings, Currency } from '../types';
 import { EntryType } from '../types';
+import { currencyOptions } from '../utils/constants';
 import { backendClient } from './backendClient';
 import { supabase } from './supabaseClient';
 
@@ -12,9 +13,13 @@ interface SyncPayload {
 const noop = async () => { };
 const METADATA_KEY = 'workHoursTracker';
 
+const allowedCurrencies = new Set<Currency>(currencyOptions.map(option => option.value));
+
 const sanitizeCurrency = (currency: unknown): Currency => {
-  const valid: Currency[] = ['USD', 'EUR', 'VND'];
-  return valid.includes(currency as Currency) ? (currency as Currency) : 'USD';
+  if (allowedCurrencies.has(currency as Currency)) {
+    return currency as Currency;
+  }
+  return 'USD';
 };
 
 const sanitizeJob = (job: any, userId?: string | null): Job | null => {
