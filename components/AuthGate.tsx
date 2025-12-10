@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useI18n } from '../hooks/useI18n';
-import { CalendarIcon, ChartBarIcon, WandIcon } from './shared/Icons';
+import { CalendarIcon, ChartBarIcon, WandIcon, ExcelExportIcon } from './shared/Icons';
 
 type Mode = 'signIn' | 'signUp';
 
@@ -80,15 +80,21 @@ export const AuthGate: React.FC = () => {
         description: t('auth.what.earnings.description'),
         icon: <ChartBarIcon className="h-5 w-5 text-emerald-300" />,
       },
+      {
+        key: 'export',
+        title: t('auth.what.export.title'),
+        description: t('auth.what.export.description'),
+        icon: <ExcelExportIcon className="h-5 w-5 text-emerald-300" />,
+      },
     ],
     [t]
   );
 
   const previewEntries = useMemo(
     () => [
-      { id: 'job-1', job: 'Job 1', label: 'Morning Prep', time: '06:00 – 10:00', gradient: 'from-rose-400 to-rose-500' },
-      { id: 'job-2', job: 'Job 2', label: 'Studio Session', time: '12:00 – 15:00', gradient: 'from-emerald-400 to-emerald-500' },
-      { id: 'job-3', job: 'Freelance', label: 'Delivery Route', time: '17:00 – 20:00', gradient: 'from-sky-400 to-blue-500' },
+      { id: 'job-1', job: 'Barrista', label: 'Morning Coffee', time: '06:00 – 10:00', gradient: 'from-rose-400 to-rose-500' },
+      { id: 'job-2', job: 'FrontEnd Dev', label: 'Remote Studio Session', time: '12:00 – 15:00', gradient: 'from-emerald-400 to-emerald-500' },
+      { id: 'job-3', job: 'Freelance', label: 'German Language Coach', time: '17:00 – 20:00', gradient: 'from-sky-400 to-blue-500' },
     ],
     []
   );
@@ -216,7 +222,7 @@ export const AuthGate: React.FC = () => {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-white/10 p-6">
+            <div className="rounded-3xl border border-white/10 bg-linear-to-br from-white/5 to-white/10 p-6">
               <div className="mb-6 flex items-center justify-between">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-300">
                   {t('auth.whyTitle')}
@@ -235,7 +241,7 @@ export const AuthGate: React.FC = () => {
           </section>
 
           <section className="space-y-6">
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/60 to-slate-900/20 p-6 shadow-2xl shadow-black/40">
+            <div className="rounded-3xl border border-white/10 bg-linear-to-b from-slate-900/60 to-slate-900/20 p-6 shadow-2xl shadow-black/40">
               <div className="flex items-center justify-between text-sm text-slate-300">
                 <span>{t('nav.calendar')}</span>
                 <span>{t('auth.metrics.sync.value')}</span>
@@ -249,7 +255,7 @@ export const AuthGate: React.FC = () => {
                       <p className="text-xs text-slate-300">{entry.label}</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className={`inline-flex rounded-full bg-gradient-to-r ${entry.gradient} px-3 py-1 text-xs font-medium text-white`}>{entry.time}</span>
+                      <span className={`inline-flex rounded-full bg-linear-to-r ${entry.gradient} px-3 py-1 text-xs font-medium text-white`}>{entry.time}</span>
                       <span className="h-2 w-2 rounded-full bg-white/80" />
                     </div>
                   </div>

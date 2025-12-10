@@ -203,6 +203,10 @@ const translations: Record<Language, TranslationRecord> = {
           title: 'Automatic earnings math',
           description: 'Hourly rates, currencies and overtime roll up instantly for every job.'
         },
+        export: {
+          title: 'Export to Excel',
+          description: 'Export easy to excel either per job or combined. Several options are available.'
+        },
       },
       whyTitle: 'Why crews track hours with Work Hours Tracker',
       features: {
@@ -356,6 +360,25 @@ const translations: Record<Language, TranslationRecord> = {
       heroHeadline: 'Behalte deine Zeit im Griff.',
       heroSubheadline: 'Erfasse Schichten, verfolge Einnahmen und synchronisiere jedes Gerät in einer eleganten Oberfläche.',
       heroCta: 'Kostenlos registrieren',
+      whatTitle: 'Das bekommst du ab Tag eins',
+      what: {
+        planner: {
+          title: 'Visueller Schichtplaner',
+          description: 'Ein Kalender zeigt alle Jobs gleichzeitig, damit du immer weißt, wohin deine Zeit geht.'
+        },
+        capture: {
+          title: 'Reibungslose Erfassung',
+          description: 'Tippen, ziehen oder in Alltagssprache schreiben – die KI macht daraus strukturierte Einträge.'
+        },
+        earnings: {
+          title: 'Automatische Verdienstberechnung',
+          description: 'Stundensätze, Währungen und Überstunden werden pro Job sofort zusammengerechnet.'
+        },
+        export: {
+          title: 'Export nach Excel',
+          description: 'Exportiere Jobs einzeln oder gesammelt nach Excel – mehrere Optionen stehen bereit.'
+        },
+      },
       features: {
         tracking: {
           title: 'Schnelles Tracking',
@@ -507,6 +530,25 @@ const translations: Record<Language, TranslationRecord> = {
       heroHeadline: 'Kiểm soát thời gian của bạn.',
       heroSubheadline: 'Ghi lại ca làm, theo dõi thu nhập và đồng bộ mọi thiết bị trong một không gian hiện đại.',
       heroCta: 'Tạo tài khoản miễn phí',
+      whatTitle: 'Bạn nhận được gì ngay ngày đầu',
+      what: {
+        planner: {
+          title: 'Lịch ca trực trực quan',
+          description: 'Một lịch hiển thị mọi công việc cùng lúc để bạn luôn biết thời gian dùng cho việc gì.'
+        },
+        capture: {
+          title: 'Ghi chép siêu nhanh',
+          description: 'Chạm, kéo hoặc gõ ngôn ngữ tự nhiên và để AI biến thành mục dữ liệu chuẩn.'
+        },
+        earnings: {
+          title: 'Tính thu nhập tự động',
+          description: 'Đơn giá giờ, tiền tệ và tăng ca được tổng hợp tức thì cho từng công việc.'
+        },
+        export: {
+          title: 'Xuất Excel linh hoạt',
+          description: 'Xuất theo từng công việc hoặc gộp chung ra Excel với nhiều tùy chọn.'
+        },
+      },
       features: {
         tracking: {
           title: 'Ghi giờ tức thì',
@@ -658,6 +700,25 @@ const translations: Record<Language, TranslationRecord> = {
       heroHeadline: 'Toma el control de tu tiempo.',
       heroSubheadline: 'Registra turnos, monitorea ingresos y sincroniza cada dispositivo en una experiencia elegante.',
       heroCta: 'Crea tu cuenta gratis',
+      whatTitle: 'Lo que recibes desde el primer día',
+      what: {
+        planner: {
+          title: 'Planificador visual de turnos',
+          description: 'Un calendario que muestra todos los trabajos a la vez para saber siempre dónde va tu tiempo.'
+        },
+        capture: {
+          title: 'Captura sin fricción',
+          description: 'Toca, arrastra o escribe en lenguaje natural y deja que la IA cree registros estructurados.'
+        },
+        earnings: {
+          title: 'Cálculo automático de ingresos',
+          description: 'Tarifas horarias, monedas y horas extra se suman al instante para cada trabajo.'
+        },
+        export: {
+          title: 'Exportación a Excel',
+          description: 'Exporta fácilmente a Excel por trabajo o combinado, con varias opciones disponibles.'
+        },
+      },
       features: {
         tracking: {
           title: 'Registro instantáneo',
@@ -686,7 +747,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Gérer les jobs', schedule: 'Horaire', rateDisplay: '{amount} / heure', addTitle: 'Ajouter un job', nameLabel: 'Nom du job', rateLabel: 'Taux horaire', currencyLabel: 'Devise', addButton: 'Ajouter' }, notifications: { title: 'Notifications', reminderLabel: 'Rappel quotidien', reminderNote: 'Rappel prévu à {time}.', permissionDenied: 'Notifications bloquées.', notSupported: 'Non supporté.', updateError: 'Erreur de mise à jour.' }, language: { title: 'Langue', label: 'Langue de l\'app' }, theme: { toggle: 'Changer de thème', switchToDark: 'Mode sombre', switchToLight: 'Mode clair', dark: 'Sombre', light: 'Clair' } },
     entryModal: { ai: { title: 'Entrée intelligente IA', examples: 'Ex: "Travaillé sur Job 1 de 9h à 17h"', placeholder: 'Décrivez votre travail...', parse: 'Analyser', parsing: 'Analyse...', jobNotFound: 'Job non trouvé', unrecognized: 'Non reconnu' }, header: '{title} pour {date}', addTitle: 'Ajouter', editTitle: 'Modifier', job: 'Job', entryType: 'Type', types: { timeRange: 'Plage horaire', duration: 'Durée', status: 'Statut' }, startTime: 'Début', endTime: 'Fin', duration: 'Durée (h)', status: 'Statut', selectJob: 'Choisir un job', selectJobError: 'Sélectionnez un job', addButton: 'Ajouter', saveButton: 'Enregistrer' },
     statuses: { worked: 'Travaillé', off: 'Repos', holiday: 'Vacances', sick: 'Maladie' },
-    auth: { loading: 'Connexion...', title: 'Bienvenue', subtitleSignIn: 'Connectez-vous', subtitleSignUp: 'Créer un compte', emailLabel: 'Email', passwordLabel: 'Mot de passe', submitting: 'Patientez...', signIn: 'Connexion', signUp: 'Inscription', switchToSignUp: 'Pas de compte ?', switchToSignIn: 'Déjà un compte ?', signOut: 'Déconnexion', checkEmail: 'Vérifiez votre email', heroEyebrow: 'Suivi d\'heures', heroHeadline: 'Maîtrisez votre temps', heroSubheadline: 'Suivez vos heures et gains', heroCta: 'Compte gratuit', features: { tracking: { title: 'Suivi instantané', description: 'Capturez vos heures rapidement' }, schedule: { title: 'Planning intelligent', description: 'Visualisez votre semaine' }, sync: { title: 'Synchro cloud', description: 'Web, iOS et Android' } }, downloadTitle: 'Apps mobiles bientôt', downloadSubtitle: 'Scannez pour télécharger', downloadPlaceholder: 'Aperçu' }
+    auth: { loading: 'Connexion...', title: 'Bienvenue', subtitleSignIn: 'Connectez-vous', subtitleSignUp: 'Créer un compte', emailLabel: 'Email', passwordLabel: 'Mot de passe', submitting: 'Patientez...', signIn: 'Connexion', signUp: 'Inscription', switchToSignUp: 'Pas de compte ?', switchToSignIn: 'Déjà un compte ?', signOut: 'Déconnexion', checkEmail: 'Vérifiez votre email', heroEyebrow: 'Suivi d\'heures', heroHeadline: 'Maîtrisez votre temps', heroSubheadline: 'Suivez vos heures et gains', heroCta: 'Compte gratuit',
+      whatTitle: 'Ce que vous obtenez dès le premier jour',
+      what: {
+        planner: {
+          title: 'Planificateur visuel de shifts',
+          description: 'Un calendrier affiche tous vos jobs d’un coup pour savoir où passe votre temps.'
+        },
+        capture: {
+          title: 'Capture sans friction',
+          description: 'Touchez, faites glisser ou écrivez en langage naturel et laissez l’IA structurer vos entrées.'
+        },
+        earnings: {
+          title: 'Calcul automatique des gains',
+          description: 'Taux horaires, devises et heures sup’ sont consolidés instantanément par job.'
+        },
+        export: {
+          title: 'Export vers Excel',
+          description: 'Exportez facilement vers Excel par job ou combiné, avec plusieurs options.'
+        },
+      },
+      features: { tracking: { title: 'Suivi instantané', description: 'Capturez vos heures rapidement' }, schedule: { title: 'Planning intelligent', description: 'Visualisez votre semaine' }, sync: { title: 'Synchro cloud', description: 'Web, iOS et Android' } }, downloadTitle: 'Apps mobiles bientôt', downloadSubtitle: 'Scannez pour télécharger', downloadPlaceholder: 'Aperçu' }
   },
   it: {
     app: { title: 'Tracciamento Ore', addEntryAria: 'Aggiungi voce' },
@@ -697,7 +778,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Gestisci lavori', schedule: 'Orario', rateDisplay: '{amount} / ora', addTitle: 'Nuovo lavoro', nameLabel: 'Nome', rateLabel: 'Tariffa oraria', currencyLabel: 'Valuta', addButton: 'Aggiungi' }, notifications: { title: 'Notifiche', reminderLabel: 'Promemoria giornaliero', reminderNote: 'Promemoria alle {time}.', permissionDenied: 'Notifiche bloccate.', notSupported: 'Non supportato.', updateError: 'Errore aggiornamento.' }, language: { title: 'Lingua', label: 'Lingua app' }, theme: { toggle: 'Cambia tema', switchToDark: 'Modo scuro', switchToLight: 'Modo chiaro', dark: 'Scuro', light: 'Chiaro' } },
     entryModal: { ai: { title: 'Input Smart AI', examples: 'Es: "Lavorato su Job 1 dalle 9 alle 17"', placeholder: 'Descrivi il lavoro...', parse: 'Analizza', parsing: 'Analisi...', jobNotFound: 'Lavoro non trovato', unrecognized: 'Non riconosciuto' }, header: '{title} per {date}', addTitle: 'Aggiungi', editTitle: 'Modifica', job: 'Lavoro', entryType: 'Tipo', types: { timeRange: 'Orario', duration: 'Durata', status: 'Stato' }, startTime: 'Inizio', endTime: 'Fine', duration: 'Durata (h)', status: 'Stato', selectJob: 'Seleziona lavoro', selectJobError: 'Seleziona un lavoro', addButton: 'Aggiungi', saveButton: 'Salva' },
     statuses: { worked: 'Lavorato', off: 'Riposo', holiday: 'Ferie', sick: 'Malattia' },
-    auth: { loading: 'Accesso...', title: 'Bentornato', subtitleSignIn: 'Accedi', subtitleSignUp: 'Registrati', emailLabel: 'Email', passwordLabel: 'Password', submitting: 'Attendi...', signIn: 'Accedi', signUp: 'Registrati', switchToSignUp: 'Non hai un account?', switchToSignIn: 'Hai già un account?', signOut: 'Esci', checkEmail: 'Controlla email', heroEyebrow: 'Tracciamento Ore', heroHeadline: 'Gestisci il tuo tempo', heroSubheadline: 'Traccia ore e guadagni', heroCta: 'Account gratuito', features: { tracking: { title: 'Tracciamento istantaneo', description: 'Cattura le ore rapidamente' }, schedule: { title: 'Pianificazione smart', description: 'Visualizza la settimana' }, sync: { title: 'Sync cloud', description: 'Web, iOS e Android' } }, downloadTitle: 'App mobili presto', downloadSubtitle: 'Scansiona per scaricare', downloadPlaceholder: 'Anteprima' }
+    auth: { loading: 'Accesso...', title: 'Bentornato', subtitleSignIn: 'Accedi', subtitleSignUp: 'Registrati', emailLabel: 'Email', passwordLabel: 'Password', submitting: 'Attendi...', signIn: 'Accedi', signUp: 'Registrati', switchToSignUp: 'Non hai un account?', switchToSignIn: 'Hai già un account?', signOut: 'Esci', checkEmail: 'Controlla email', heroEyebrow: 'Tracciamento Ore', heroHeadline: 'Gestisci il tuo tempo', heroSubheadline: 'Traccia ore e guadagni', heroCta: 'Account gratuito',
+      whatTitle: 'Cosa ottieni dal primo giorno',
+      what: {
+        planner: {
+          title: 'Planner turni visivo',
+          description: 'Un calendario mostra tutti i lavori insieme così sai sempre dove va il tuo tempo.'
+        },
+        capture: {
+          title: 'Acquisizione senza attriti',
+          description: 'Tocca, trascina o scrivi in linguaggio naturale e lascia che l’IA crei voci strutturate.'
+        },
+        earnings: {
+          title: 'Calcolo automatico dei guadagni',
+          description: 'Tariffe orarie, valute e straordinari vengono sommati in modo immediato per ogni lavoro.'
+        },
+        export: {
+          title: 'Esporta in Excel',
+          description: 'Esporta facilmente in Excel per singolo lavoro o combinato, con diverse opzioni disponibili.'
+        },
+      },
+      features: { tracking: { title: 'Tracciamento istantaneo', description: 'Cattura le ore rapidamente' }, schedule: { title: 'Pianificazione smart', description: 'Visualizza la settimana' }, sync: { title: 'Sync cloud', description: 'Web, iOS e Android' } }, downloadTitle: 'App mobili presto', downloadSubtitle: 'Scansiona per scaricare', downloadPlaceholder: 'Anteprima' }
   },
   pt: {
     app: { title: 'Rastreador de Horas', addEntryAria: 'Adicionar entrada' },
@@ -708,7 +809,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Gerenciar trabalhos', schedule: 'Horário', rateDisplay: '{amount} / hora', addTitle: 'Novo trabalho', nameLabel: 'Nome', rateLabel: 'Taxa horária', currencyLabel: 'Moeda', addButton: 'Adicionar' }, notifications: { title: 'Notificações', reminderLabel: 'Lembrete diário', reminderNote: 'Lembrete às {time}.', permissionDenied: 'Bloqueado.', notSupported: 'Não suportado.', updateError: 'Erro.' }, language: { title: 'Idioma', label: 'Idioma do app' }, theme: { toggle: 'Alternar tema', switchToDark: 'Modo escuro', switchToLight: 'Modo claro', dark: 'Escuro', light: 'Claro' } },
     entryModal: { ai: { title: 'Entrada Inteligente IA', examples: 'Ex: "Trabalhei no Job 1 das 9 às 17"', placeholder: 'Descreva o trabalho...', parse: 'Analisar', parsing: 'Analisando...', jobNotFound: 'Trabalho não encontrado', unrecognized: 'Não reconhecido' }, header: '{title} para {date}', addTitle: 'Adicionar', editTitle: 'Editar', job: 'Trabalho', entryType: 'Tipo', types: { timeRange: 'Horário', duration: 'Duração', status: 'Status' }, startTime: 'Início', endTime: 'Fim', duration: 'Duração (h)', status: 'Status', selectJob: 'Selecione um trabalho', selectJobError: 'Selecione um trabalho', addButton: 'Adicionar', saveButton: 'Salvar' },
     statuses: { worked: 'Trabalhado', off: 'Folga', holiday: 'Férias', sick: 'Doença' },
-    auth: { loading: 'Entrando...', title: 'Bem-vindo', subtitleSignIn: 'Entrar', subtitleSignUp: 'Criar conta', emailLabel: 'Email', passwordLabel: 'Senha', submitting: 'Aguarde...', signIn: 'Entrar', signUp: 'Cadastrar', switchToSignUp: 'Sem conta?', switchToSignIn: 'Já tem conta?', signOut: 'Sair', checkEmail: 'Verifique seu email', heroEyebrow: 'Rastreador de Horas', heroHeadline: 'Controle seu tempo', heroSubheadline: 'Rastreie horas e ganhos', heroCta: 'Conta grátis', features: { tracking: { title: 'Rastreamento instantâneo', description: 'Capture horas rapidamente' }, schedule: { title: 'Agendamento inteligente', description: 'Visualize a semana' }, sync: { title: 'Sync nuvem', description: 'Web, iOS e Android' } }, downloadTitle: 'Apps móveis em breve', downloadSubtitle: 'Escaneie para baixar', downloadPlaceholder: 'Prévia' }
+    auth: { loading: 'Entrando...', title: 'Bem-vindo', subtitleSignIn: 'Entrar', subtitleSignUp: 'Criar conta', emailLabel: 'Email', passwordLabel: 'Senha', submitting: 'Aguarde...', signIn: 'Entrar', signUp: 'Cadastrar', switchToSignUp: 'Sem conta?', switchToSignIn: 'Já tem conta?', signOut: 'Sair', checkEmail: 'Verifique seu email', heroEyebrow: 'Rastreador de Horas', heroHeadline: 'Controle seu tempo', heroSubheadline: 'Rastreie horas e ganhos', heroCta: 'Conta grátis',
+      whatTitle: 'O que você recebe no primeiro dia',
+      what: {
+        planner: {
+          title: 'Planejador visual de turnos',
+          description: 'Um calendário mostra todos os trabalhos de uma vez para você saber para onde vai o tempo.'
+        },
+        capture: {
+          title: 'Captura sem atrito',
+          description: 'Toque, arraste ou digite em linguagem natural e deixe a IA gerar entradas estruturadas.'
+        },
+        earnings: {
+          title: 'Cálculo automático de ganhos',
+          description: 'Taxas horárias, moedas e horas extras são consolidadas instantaneamente por trabalho.'
+        },
+        export: {
+          title: 'Exportar para Excel',
+          description: 'Exporte facilmente para Excel por trabalho ou combinado, com várias opções.'
+        },
+      },
+      features: { tracking: { title: 'Rastreamento instantâneo', description: 'Capture horas rapidamente' }, schedule: { title: 'Agendamento inteligente', description: 'Visualize a semana' }, sync: { title: 'Sync nuvem', description: 'Web, iOS e Android' } }, downloadTitle: 'Apps móveis em breve', downloadSubtitle: 'Escaneie para baixar', downloadPlaceholder: 'Prévia' }
   },
   ru: {
     app: { title: 'Трекер часов', addEntryAria: 'Добавить запись' },
@@ -719,7 +840,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Управление работами', schedule: 'График', rateDisplay: '{amount} / час', addTitle: 'Новая работа', nameLabel: 'Название', rateLabel: 'Ставка', currencyLabel: 'Валюта', addButton: 'Добавить' }, notifications: { title: 'Уведомления', reminderLabel: 'Ежедневное напоминание', reminderNote: 'Напоминание в {time}.', permissionDenied: 'Заблокировано.', notSupported: 'Не поддерживается.', updateError: 'Ошибка.' }, language: { title: 'Язык', label: 'Язык приложения' }, theme: { toggle: 'Сменить тему', switchToDark: 'Тёмная тема', switchToLight: 'Светлая тема', dark: 'Тёмная', light: 'Светлая' } },
     entryModal: { ai: { title: 'Умный ввод (AI)', examples: 'Пример: "Работал на Job 1 с 9 до 17"', placeholder: 'Опишите работу...', parse: 'Разобрать', parsing: 'Анализ...', jobNotFound: 'Работа не найдена', unrecognized: 'Не распознано' }, header: '{title} на {date}', addTitle: 'Добавить', editTitle: 'Изменить', job: 'Работа', entryType: 'Тип', types: { timeRange: 'Время', duration: 'Длительность', status: 'Статус' }, startTime: 'Начало', endTime: 'Конец', duration: 'Длительность (ч)', status: 'Статус', selectJob: 'Выберите работу', selectJobError: 'Выберите работу', addButton: 'Добавить', saveButton: 'Сохранить' },
     statuses: { worked: 'Работал', off: 'Выходной', holiday: 'Отпуск', sick: 'Болезнь' },
-    auth: { loading: 'Вход...', title: 'Добро пожаловать', subtitleSignIn: 'Войти', subtitleSignUp: 'Регистрация', emailLabel: 'Email', passwordLabel: 'Пароль', submitting: 'Ждите...', signIn: 'Войти', signUp: 'Регистрация', switchToSignUp: 'Нет аккаунта?', switchToSignIn: 'Есть аккаунт?', signOut: 'Выйти', checkEmail: 'Проверьте email', heroEyebrow: 'Трекер часов', heroHeadline: 'Управляй временем', heroSubheadline: 'Следи за часами и доходом', heroCta: 'Бесплатно', features: { tracking: { title: 'Мгновенный трекинг', description: 'Быстрый ввод' }, schedule: { title: 'Умный график', description: 'План на неделю' }, sync: { title: 'Облачная синхронизация', description: 'Web, iOS, Android' } }, downloadTitle: 'Скоро на мобильных', downloadSubtitle: 'Сканируй для загрузки', downloadPlaceholder: 'Превью' }
+    auth: { loading: 'Вход...', title: 'Добро пожаловать', subtitleSignIn: 'Войти', subtitleSignUp: 'Регистрация', emailLabel: 'Email', passwordLabel: 'Пароль', submitting: 'Ждите...', signIn: 'Войти', signUp: 'Регистрация', switchToSignUp: 'Нет аккаунта?', switchToSignIn: 'Есть аккаунт?', signOut: 'Выйти', checkEmail: 'Проверьте email', heroEyebrow: 'Трекер часов', heroHeadline: 'Управляй временем', heroSubheadline: 'Следи за часами и доходом', heroCta: 'Бесплатно',
+      whatTitle: 'Что вы получаете уже в первый день',
+      what: {
+        planner: {
+          title: 'Визуальный планировщик смен',
+          description: 'Календарь показывает все задания сразу, чтобы вы знали, куда уходит время.'
+        },
+        capture: {
+          title: 'Ввод без лишних действий',
+          description: 'Нажмите, перетащите или напишите простым языком — ИИ создаст структурированные записи.'
+        },
+        earnings: {
+          title: 'Автоматический расчет дохода',
+          description: 'Почасовые ставки, валюты и переработки мгновенно суммируются по каждому заданию.'
+        },
+        export: {
+          title: 'Экспорт в Excel',
+          description: 'Легко экспортируйте по отдельным работам или суммарно в Excel — доступно несколько вариантов.'
+        },
+      },
+      features: { tracking: { title: 'Мгновенный трекинг', description: 'Быстрый ввод' }, schedule: { title: 'Умный график', description: 'План на неделю' }, sync: { title: 'Облачная синхронизация', description: 'Web, iOS, Android' } }, downloadTitle: 'Скоро на мобильных', downloadSubtitle: 'Сканируй для загрузки', downloadPlaceholder: 'Превью' }
   },
   tr: {
     app: { title: 'İş Saati Takibi', addEntryAria: 'Yeni giriş ekle' },
@@ -730,7 +871,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'İşleri Yönet', schedule: 'Program', rateDisplay: '{amount} / saat', addTitle: 'Yeni İş Ekle', nameLabel: 'İş Adı', rateLabel: 'Saatlik Ücret', currencyLabel: 'Para Birimi', addButton: 'Ekle' }, notifications: { title: 'Bildirimler', reminderLabel: 'Günlük Hatırlatıcı', reminderNote: '{time} için ayarlandı.', permissionDenied: 'Engellendi.', notSupported: 'Desteklenmiyor.', updateError: 'Hata.' }, language: { title: 'Dil', label: 'Uygulama Dili' }, theme: { toggle: 'Temayı Değiştir', switchToDark: 'Koyu Mod', switchToLight: 'Açık Mod', dark: 'Koyu', light: 'Açık' } },
     entryModal: { ai: { title: 'AI ile Akıllı Giriş', examples: 'Ör: "Dün 9-17 arası İş 1\'de çalıştım"', placeholder: 'Çalışmanı anlat...', parse: 'Ayrıştır', parsing: 'Ayrıştırılıyor...', jobNotFound: 'İş bulunamadı', unrecognized: 'Anlaşılamadı' }, header: '{date} için {title}', addTitle: 'Ekle', editTitle: 'Düzenle', job: 'İş', entryType: 'Tür', types: { timeRange: 'Zaman Aralığı', duration: 'Süre', status: 'Durum' }, startTime: 'Başlangıç', endTime: 'Bitiş', duration: 'Süre (saat)', status: 'Durum', selectJob: 'İş seç', selectJobError: 'Bir iş seçin', addButton: 'Ekle', saveButton: 'Kaydet' },
     statuses: { worked: 'Çalışıldı', off: 'İzin', holiday: 'Tatil', sick: 'Hastalık' },
-    auth: { loading: 'Giriş yapılıyor...', title: 'Hoşgeldiniz', subtitleSignIn: 'Giriş yap', subtitleSignUp: 'Kayıt ol', emailLabel: 'E-posta', passwordLabel: 'Şifre', submitting: 'Bekleyin...', signIn: 'Giriş Yap', signUp: 'Kayıt Ol', switchToSignUp: 'Hesabın yok mu?', switchToSignIn: 'Hesabın var mı?', signOut: 'Çıkış Yap', checkEmail: 'E-postanı kontrol et', heroEyebrow: 'İş Saati Takibi', heroHeadline: 'Zamanını Yönet', heroSubheadline: 'Saatleri ve kazancı takip et', heroCta: 'Ücretsiz Hesap', features: { tracking: { title: 'Hızlı Takip', description: 'Saniyeler içinde kaydet' }, schedule: { title: 'Akıllı Program', description: 'Haftanı planla' }, sync: { title: 'Bulut Senkronizasyon', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobil Uygulamalar Yakında', downloadSubtitle: 'İndirmek için tara', downloadPlaceholder: 'Önizleme' }
+    auth: { loading: 'Giriş yapılıyor...', title: 'Hoşgeldiniz', subtitleSignIn: 'Giriş yap', subtitleSignUp: 'Kayıt ol', emailLabel: 'E-posta', passwordLabel: 'Şifre', submitting: 'Bekleyin...', signIn: 'Giriş Yap', signUp: 'Kayıt Ol', switchToSignUp: 'Hesabın yok mu?', switchToSignIn: 'Hesabın var mı?', signOut: 'Çıkış Yap', checkEmail: 'E-postanı kontrol et', heroEyebrow: 'İş Saati Takibi', heroHeadline: 'Zamanını Yönet', heroSubheadline: 'Saatleri ve kazancı takip et', heroCta: 'Ücretsiz Hesap',
+      whatTitle: 'İlk günden elde edecekleriniz',
+      what: {
+        planner: {
+          title: 'Görsel vardiya planlayıcısı',
+          description: 'Tüm işleri aynı anda gösteren takvimle zamanınızın nereye gittiğini bilirsiniz.'
+        },
+        capture: {
+          title: 'Sürtünmesiz kayıt',
+          description: 'Dokunun, sürükleyin veya doğal dilde yazın; yapay zekâ bunu yapılandırılmış kayıtlara dönüştürür.'
+        },
+        earnings: {
+          title: 'Otomatik kazanç hesabı',
+          description: 'Saatlik ücretler, para birimleri ve mesailer her iş için anında toplanır.'
+        },
+        export: {
+          title: 'Excel’e aktarım',
+          description: 'Excel’e işi bazında veya toplu halde kolayca aktarın; birden fazla seçenek vardır.'
+        },
+      },
+      features: { tracking: { title: 'Hızlı Takip', description: 'Saniyeler içinde kaydet' }, schedule: { title: 'Akıllı Program', description: 'Haftanı planla' }, sync: { title: 'Bulut Senkronizasyon', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobil Uygulamalar Yakında', downloadSubtitle: 'İndirmek için tara', downloadPlaceholder: 'Önizleme' }
   },
   pl: {
     app: { title: 'Licznik Godzin', addEntryAria: 'Dodaj wpis' },
@@ -741,7 +902,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Zarządzaj pracami', schedule: 'Grafik', rateDisplay: '{amount} / godz.', addTitle: 'Nowa praca', nameLabel: 'Nazwa', rateLabel: 'Stawka', currencyLabel: 'Waluta', addButton: 'Dodaj' }, notifications: { title: 'Powiadomienia', reminderLabel: 'Codzienne przypomnienie', reminderNote: 'Przypomnienie o {time}.', permissionDenied: 'Zablokowane.', notSupported: 'Nieobsługiwane.', updateError: 'Błąd.' }, language: { title: 'Język', label: 'Język aplikacji' }, theme: { toggle: 'Zmień motyw', switchToDark: 'Ciemny', switchToLight: 'Jasny', dark: 'Ciemny', light: 'Jasny' } },
     entryModal: { ai: { title: 'Inteligentne wprowadzanie AI', examples: 'Np: "Praca 1 od 9 do 17"', placeholder: 'Opisz pracę...', parse: 'Analizuj', parsing: 'Analiza...', jobNotFound: 'Nie znaleziono pracy', unrecognized: 'Nie rozpoznano' }, header: '{title} - {date}', addTitle: 'Dodaj', editTitle: 'Edytuj', job: 'Praca', entryType: 'Typ', types: { timeRange: 'Zakres czasu', duration: 'Czas trwania', status: 'Status' }, startTime: 'Start', endTime: 'Koniec', duration: 'Czas (h)', status: 'Status', selectJob: 'Wybierz pracę', selectJobError: 'Wybierz pracę', addButton: 'Dodaj', saveButton: 'Zapisz' },
     statuses: { worked: 'Praca', off: 'Wolne', holiday: 'Urlop', sick: 'Chorobowe' },
-    auth: { loading: 'Logowanie...', title: 'Witaj', subtitleSignIn: 'Zaloguj się', subtitleSignUp: 'Zarejestruj się', emailLabel: 'Email', passwordLabel: 'Hasło', submitting: 'Czekaj...', signIn: 'Zaloguj', signUp: 'Rejestracja', switchToSignUp: 'Brak konta?', switchToSignIn: 'Masz konto?', signOut: 'Wyloguj', checkEmail: 'Sprawdź email', heroEyebrow: 'Licznik Godzin', heroHeadline: 'Twoje godziny', heroSubheadline: 'Śledź czas i zarobki', heroCta: 'Darmowe konto', features: { tracking: { title: 'Szybkie śledzenie', description: 'Zapisuj godziny' }, schedule: { title: 'Grafik', description: 'Planuj tydzień' }, sync: { title: 'Chmura', description: 'Web, iOS, Android' } }, downloadTitle: 'Aplikacje mobilne wkrótce', downloadSubtitle: 'Zeskanuj aby pobrać', downloadPlaceholder: 'Podgląd' }
+    auth: { loading: 'Logowanie...', title: 'Witaj', subtitleSignIn: 'Zaloguj się', subtitleSignUp: 'Zarejestruj się', emailLabel: 'Email', passwordLabel: 'Hasło', submitting: 'Czekaj...', signIn: 'Zaloguj', signUp: 'Rejestracja', switchToSignUp: 'Brak konta?', switchToSignIn: 'Masz konto?', signOut: 'Wyloguj', checkEmail: 'Sprawdź email', heroEyebrow: 'Licznik Godzin', heroHeadline: 'Twoje godziny', heroSubheadline: 'Śledź czas i zarobki', heroCta: 'Darmowe konto',
+      whatTitle: 'Co otrzymujesz już pierwszego dnia',
+      what: {
+        planner: {
+          title: 'Wizualny planer zmian',
+          description: 'Kalendarz pokazuje wszystkie prace naraz, więc zawsze wiesz, gdzie znika czas.'
+        },
+        capture: {
+          title: 'Bezproblemowe dodawanie',
+          description: 'Dotknij, przeciągnij lub wpisz naturalnym językiem, a AI ułoży to w uporządkowane wpisy.'
+        },
+        earnings: {
+          title: 'Automatyczne liczenie zarobków',
+          description: 'Stawki godzinowe, waluty i nadgodziny są natychmiast sumowane dla każdego zlecenia.'
+        },
+        export: {
+          title: 'Eksport do Excela',
+          description: 'Eksportuj do Excela per praca lub łącznie – dostępnych jest kilka opcji.'
+        },
+      },
+      features: { tracking: { title: 'Szybkie śledzenie', description: 'Zapisuj godziny' }, schedule: { title: 'Grafik', description: 'Planuj tydzień' }, sync: { title: 'Chmura', description: 'Web, iOS, Android' } }, downloadTitle: 'Aplikacje mobilne wkrótce', downloadSubtitle: 'Zeskanuj aby pobrać', downloadPlaceholder: 'Podgląd' }
   },
   nl: {
     app: { title: 'Urenregistratie', addEntryAria: 'Nieuwe invoer' },
@@ -752,7 +933,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Banen beheren', schedule: 'Rooster', rateDisplay: '{amount} / uur', addTitle: 'Nieuwe baan', nameLabel: 'Naam', rateLabel: 'Uurtarief', currencyLabel: 'Valuta', addButton: 'Toevoegen' }, notifications: { title: 'Meldingen', reminderLabel: 'Dagelijkse herinnering', reminderNote: 'Herinnering om {time}.', permissionDenied: 'Geblokkeerd.', notSupported: 'Niet ondersteund.', updateError: 'Fout.' }, language: { title: 'Taal', label: 'App taal' }, theme: { toggle: 'Thema wisselen', switchToDark: 'Donker', switchToLight: 'Licht', dark: 'Donker', light: 'Licht' } },
     entryModal: { ai: { title: 'Slimme invoer AI', examples: 'Bijv: "Gewerkt aan Baan 1 van 9 tot 17"', placeholder: 'Beschrijf je werk...', parse: 'Analyseren', parsing: 'Bezig...', jobNotFound: 'Baan niet gevonden', unrecognized: 'Niet herkend' }, header: '{title} op {date}', addTitle: 'Toevoegen', editTitle: 'Bewerken', job: 'Baan', entryType: 'Type', types: { timeRange: 'Tijdsbestek', duration: 'Duur', status: 'Status' }, startTime: 'Start', endTime: 'Eind', duration: 'Duur (u)', status: 'Status', selectJob: 'Kies een baan', selectJobError: 'Kies een baan', addButton: 'Toevoegen', saveButton: 'Opslaan' },
     statuses: { worked: 'Gewerkt', off: 'Vrij', holiday: 'Vakantie', sick: 'Ziek' },
-    auth: { loading: 'Inloggen...', title: 'Welkom', subtitleSignIn: 'Log in', subtitleSignUp: 'Registreren', emailLabel: 'Email', passwordLabel: 'Wachtwoord', submitting: 'Wachten...', signIn: 'Inloggen', signUp: 'Registreren', switchToSignUp: 'Geen account?', switchToSignIn: 'Heb je een account?', signOut: 'Uitloggen', checkEmail: 'Check je email', heroEyebrow: 'Urenregistratie', heroHeadline: 'Beheer je tijd', heroSubheadline: 'Volg uren en inkomsten', heroCta: 'Gratis account', features: { tracking: { title: 'Direct volgen', description: 'Leg uren vast' }, schedule: { title: 'Slim rooster', description: 'Plan je week' }, sync: { title: 'Cloud sync', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobiele apps binnenkort', downloadSubtitle: 'Scan om te downloaden', downloadPlaceholder: 'Voorbeeld' }
+    auth: { loading: 'Inloggen...', title: 'Welkom', subtitleSignIn: 'Log in', subtitleSignUp: 'Registreren', emailLabel: 'Email', passwordLabel: 'Wachtwoord', submitting: 'Wachten...', signIn: 'Inloggen', signUp: 'Registreren', switchToSignUp: 'Geen account?', switchToSignIn: 'Heb je een account?', signOut: 'Uitloggen', checkEmail: 'Check je email', heroEyebrow: 'Urenregistratie', heroHeadline: 'Beheer je tijd', heroSubheadline: 'Volg uren en inkomsten', heroCta: 'Gratis account',
+      whatTitle: 'Dit krijg je vanaf dag één',
+      what: {
+        planner: {
+          title: 'Visuele dienstplanner',
+          description: 'Een kalender toont alle banen tegelijk zodat je weet waar je tijd naartoe gaat.'
+        },
+        capture: {
+          title: 'Frictieloze invoer',
+          description: 'Tik, sleep of typ in gewone taal en laat de AI er gestructureerde invoer van maken.'
+        },
+        earnings: {
+          title: 'Automatische inkomstenberekening',
+          description: 'Uurtarieven, valuta en overuren worden direct samengevoegd per baan.'
+        },
+        export: {
+          title: 'Exporteren naar Excel',
+          description: 'Exporteer eenvoudig naar Excel per baan of gecombineerd, met meerdere opties.'
+        },
+      },
+      features: { tracking: { title: 'Direct volgen', description: 'Leg uren vast' }, schedule: { title: 'Slim rooster', description: 'Plan je week' }, sync: { title: 'Cloud sync', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobiele apps binnenkort', downloadSubtitle: 'Scan om te downloaden', downloadPlaceholder: 'Voorbeeld' }
   },
   zh: {
     app: { title: '工时追踪', addEntryAria: '添加记录' },
@@ -763,7 +964,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: '工作管理', schedule: '排班', rateDisplay: '{amount} / 小时', addTitle: '添加新工作', nameLabel: '名称', rateLabel: '时薪', currencyLabel: '货币', addButton: '添加' }, notifications: { title: '通知', reminderLabel: '每日提醒', reminderNote: '定于 {time} 提醒。', permissionDenied: '通知被阻止。', notSupported: '不支持。', updateError: '更新失败。' }, language: { title: '语言', label: '应用语言' }, theme: { toggle: '切换主题', switchToDark: '深色模式', switchToLight: '浅色模式', dark: '深色', light: '浅色' } },
     entryModal: { ai: { title: 'AI 智能输入', examples: '例如："昨天9点到5点做工作1"', placeholder: '描述工作...', parse: '解析', parsing: '解析中...', jobNotFound: '未找到工作', unrecognized: '无法识别' }, header: '{date} {title}', addTitle: '添加', editTitle: '编辑', job: '工作', entryType: '类型', types: { timeRange: '时间段', duration: '时长', status: '状态' }, startTime: '开始', endTime: '结束', duration: '时长 (小时)', status: '状态', selectJob: '选择工作', selectJobError: '请选择工作', addButton: '添加', saveButton: '保存' },
     statuses: { worked: '工作', off: '休息', holiday: '假期', sick: '病假' },
-    auth: { loading: '登录中...', title: '欢迎', subtitleSignIn: '登录', subtitleSignUp: '注册', emailLabel: '邮箱', passwordLabel: '密码', submitting: '请稍候...', signIn: '登录', signUp: '注册', switchToSignUp: '没有账号？', switchToSignIn: '已有账号？', signOut: '退出', checkEmail: '请检查邮箱', heroEyebrow: '工时追踪', heroHeadline: '掌控时间', heroSubheadline: '追踪工时与收入', heroCta: '免费注册', features: { tracking: { title: '即时追踪', description: '快速记录' }, schedule: { title: '智能排班', description: '周计划' }, sync: { title: '云同步', description: 'Web, iOS, Android' } }, downloadTitle: '移动端即将推出', downloadSubtitle: '扫码下载', downloadPlaceholder: '预览' }
+    auth: { loading: '登录中...', title: '欢迎', subtitleSignIn: '登录', subtitleSignUp: '注册', emailLabel: '邮箱', passwordLabel: '密码', submitting: '请稍候...', signIn: '登录', signUp: '注册', switchToSignUp: '没有账号？', switchToSignIn: '已有账号？', signOut: '退出', checkEmail: '请检查邮箱', heroEyebrow: '工时追踪', heroHeadline: '掌控时间', heroSubheadline: '追踪工时与收入', heroCta: '免费注册',
+      whatTitle: '第一天就能拥有的功能',
+      what: {
+        planner: {
+          title: '可视化排班表',
+          description: '一个同时展示所有工作的日历，让你随时掌握时间流向。'
+        },
+        capture: {
+          title: '无阻力记录',
+          description: '点击、拖拽或输入自然语言，由 AI 自动生成结构化记录。'
+        },
+        earnings: {
+          title: '自动收益计算',
+          description: '小时费率、货币与加班即时汇总，按工作清晰呈现。'
+        },
+        export: {
+          title: '导出到 Excel',
+          description: '可按单个工作或合并导出至 Excel，提供多种选项。'
+        },
+      },
+      features: { tracking: { title: '即时追踪', description: '快速记录' }, schedule: { title: '智能排班', description: '周计划' }, sync: { title: '云同步', description: 'Web, iOS, Android' } }, downloadTitle: '移动端即将推出', downloadSubtitle: '扫码下载', downloadPlaceholder: '预览' }
   },
   ja: {
     app: { title: '勤務時間トラッカー', addEntryAria: '新規追加' },
@@ -774,7 +995,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: '仕事管理', schedule: 'スケジュール', rateDisplay: '{amount} / 時間', addTitle: '新規追加', nameLabel: '仕事名', rateLabel: '時給', currencyLabel: '通貨', addButton: '追加' }, notifications: { title: '通知', reminderLabel: 'デイリーリマインダー', reminderNote: '{time} に通知します。', permissionDenied: 'ブロックされています。', notSupported: '非対応です。', updateError: 'エラー。' }, language: { title: '言語', label: 'アプリの言語' }, theme: { toggle: 'テーマ切替', switchToDark: 'ダークモード', switchToLight: 'ライトモード', dark: 'ダーク', light: 'ライト' } },
     entryModal: { ai: { title: 'AIスマート入力', examples: '例：「昨日9時から17時まで仕事1」', placeholder: '内容を入力...', parse: '解析', parsing: '解析中...', jobNotFound: '仕事が見つかりません', unrecognized: '認識できませんでした' }, header: '{date} {title}', addTitle: '追加', editTitle: '編集', job: '仕事', entryType: 'タイプ', types: { timeRange: '時間帯', duration: '時間数', status: 'ステータス' }, startTime: '開始', endTime: '終了', duration: '時間 (h)', status: 'ステータス', selectJob: '仕事を選択', selectJobError: '仕事を選択してください', addButton: '追加', saveButton: '保存' },
     statuses: { worked: '出勤', off: '休み', holiday: '休暇', sick: '病欠' },
-    auth: { loading: 'ログイン中...', title: 'ようこそ', subtitleSignIn: 'ログイン', subtitleSignUp: '登録', emailLabel: 'メール', passwordLabel: 'パスワード', submitting: 'お待ちください...', signIn: 'ログイン', signUp: '登録', switchToSignUp: 'アカウントがない場合', switchToSignIn: 'アカウントがある場合', signOut: 'ログアウト', checkEmail: 'メールを確認してください', heroEyebrow: '勤務時間トラッカー', heroHeadline: '時間を管理', heroSubheadline: '時間と収入を記録', heroCta: '無料登録', features: { tracking: { title: '即時記録', description: '素早く記録' }, schedule: { title: 'スマート予定', description: '週間予定' }, sync: { title: 'クラウド同期', description: 'Web, iOS, Android' } }, downloadTitle: 'モバイルアプリ近日公開', downloadSubtitle: 'スキャンしてダウンロード', downloadPlaceholder: 'プレビュー' }
+    auth: { loading: 'ログイン中...', title: 'ようこそ', subtitleSignIn: 'ログイン', subtitleSignUp: '登録', emailLabel: 'メール', passwordLabel: 'パスワード', submitting: 'お待ちください...', signIn: 'ログイン', signUp: '登録', switchToSignUp: 'アカウントがない場合', switchToSignIn: 'アカウントがある場合', signOut: 'ログアウト', checkEmail: 'メールを確認してください', heroEyebrow: '勤務時間トラッカー', heroHeadline: '時間を管理', heroSubheadline: '時間と収入を記録', heroCta: '無料登録',
+      whatTitle: '初日から手に入るもの',
+      what: {
+        planner: {
+          title: 'ビジュアルシフトプランナー',
+          description: 'すべての仕事を一目で確認でき、時間の使い道がすぐ分かります。'
+        },
+        capture: {
+          title: 'ストレスのない入力',
+          description: 'タップ・ドラッグ・自然文入力をAIが構造化された記録に変換します。'
+        },
+        earnings: {
+          title: '自動収益計算',
+          description: '時給・通貨・残業が仕事ごとに即座に集計されます。'
+        },
+        export: {
+          title: 'Excel へエクスポート',
+          description: '仕事別またはまとめて簡単にExcelに出力でき、複数のオプションがあります。'
+        },
+      },
+      features: { tracking: { title: '即時記録', description: '素早く記録' }, schedule: { title: 'スマート予定', description: '週間予定' }, sync: { title: 'クラウド同期', description: 'Web, iOS, Android' } }, downloadTitle: 'モバイルアプリ近日公開', downloadSubtitle: 'スキャンしてダウンロード', downloadPlaceholder: 'プレビュー' }
   },
   ko: {
     app: { title: '근무 시간 트래커', addEntryAria: '새 항목 추가' },
@@ -785,7 +1026,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: '직업 관리', schedule: '일정', rateDisplay: '{amount} / 시간', addTitle: '새 직업 추가', nameLabel: '이름', rateLabel: '시급', currencyLabel: '통화', addButton: '추가' }, notifications: { title: '알림', reminderLabel: '일일 알림', reminderNote: '{time}에 알림.', permissionDenied: '차단됨.', notSupported: '지원되지 않음.', updateError: '오류.' }, language: { title: '언어', label: '앱 언어' }, theme: { toggle: '테마 전환', switchToDark: '다크 모드', switchToLight: '라이트 모드', dark: '다크', light: '라이트' } },
     entryModal: { ai: { title: 'AI 스마트 입력', examples: '예: "어제 9시부터 5시까지 직업1"', placeholder: '작업 설명...', parse: '분석', parsing: '분석 중...', jobNotFound: '직업을 찾을 수 없음', unrecognized: '인식 불가' }, header: '{date} {title}', addTitle: '추가', editTitle: '편집', job: '직업', entryType: '유형', types: { timeRange: '시간 범위', duration: '시간', status: '상태' }, startTime: '시작', endTime: '종료', duration: '시간 (h)', status: '상태', selectJob: '직업 선택', selectJobError: '직업을 선택하세요', addButton: '추가', saveButton: '저장' },
     statuses: { worked: '근무', off: '휴무', holiday: '휴가', sick: '병가' },
-    auth: { loading: '로그인 중...', title: '환영합니다', subtitleSignIn: '로그인', subtitleSignUp: '가입', emailLabel: '이메일', passwordLabel: '비밀번호', submitting: '잠시만요...', signIn: '로그인', signUp: '가입', switchToSignUp: '계정이 없나요?', switchToSignIn: '계정이 있나요?', signOut: '로그아웃', checkEmail: '이메일을 확인하세요', heroEyebrow: '근무 시간 트래커', heroHeadline: '시간 관리', heroSubheadline: '시간과 수입 추적', heroCta: '무료 가입', features: { tracking: { title: '즉시 추적', description: '빠른 기록' }, schedule: { title: '스마트 일정', description: '주간 계획' }, sync: { title: '클라우드 동기화', description: 'Web, iOS, Android' } }, downloadTitle: '모바일 앱 출시 예정', downloadSubtitle: '스캔하여 다운로드', downloadPlaceholder: '미리보기' }
+    auth: { loading: '로그인 중...', title: '환영합니다', subtitleSignIn: '로그인', subtitleSignUp: '가입', emailLabel: '이메일', passwordLabel: '비밀번호', submitting: '잠시만요...', signIn: '로그인', signUp: '가입', switchToSignUp: '계정이 없나요?', switchToSignIn: '계정이 있나요?', signOut: '로그아웃', checkEmail: '이메일을 확인하세요', heroEyebrow: '근무 시간 트래커', heroHeadline: '시간 관리', heroSubheadline: '시간과 수입 추적', heroCta: '무료 가입',
+      whatTitle: '첫날부터 누리는 기능',
+      what: {
+        planner: {
+          title: '시각적 근무 일정표',
+          description: '모든 일을 한눈에 보여 주어 시간이 어디에 쓰였는지 바로 파악합니다.'
+        },
+        capture: {
+          title: '마찰 없는 기록',
+          description: '탭하거나 드래그하고 자연어로 입력하면 AI가 구조화된 항목으로 바꿔 줍니다.'
+        },
+        earnings: {
+          title: '자동 수익 계산',
+          description: '시급, 통화, 초과근무가 작업별로 즉시 합산됩니다.'
+        },
+        export: {
+          title: 'Excel로 내보내기',
+          description: '작업별 또는 통합해 손쉽게 Excel로 내보낼 수 있으며 여러 옵션을 제공합니다.'
+        },
+      },
+      features: { tracking: { title: '즉시 추적', description: '빠른 기록' }, schedule: { title: '스마트 일정', description: '주간 계획' }, sync: { title: '클라우드 동기화', description: 'Web, iOS, Android' } }, downloadTitle: '모바일 앱 출시 예정', downloadSubtitle: '스캔하여 다운로드', downloadPlaceholder: '미리보기' }
   },
   hi: {
     app: { title: 'काम के घंटे ट्रैकर', addEntryAria: 'नई प्रविष्टि जोड़ें' },
@@ -796,7 +1057,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'कार्य प्रबंधित करें', schedule: 'अनुसूची', rateDisplay: '{amount} / घंटा', addTitle: 'नया कार्य जोड़ें', nameLabel: 'नाम', rateLabel: 'दर', currencyLabel: 'मुद्रा', addButton: 'जोड़ें' }, notifications: { title: 'सूचनाएं', reminderLabel: 'दैनिक अनुस्मारक', reminderNote: '{time} पर अनुस्मारक।', permissionDenied: 'अवरुद्ध।', notSupported: 'समर्थित नहीं।', updateError: 'त्रुटि।' }, language: { title: 'भाषा', label: 'ऐप भाषा' }, theme: { toggle: 'थीम बदलें', switchToDark: 'डार्क मोड', switchToLight: 'लाइट मोड', dark: 'डार्क', light: 'लाइट' } },
     entryModal: { ai: { title: 'AI स्मार्ट एंट्री', examples: 'उदा: "कल 9 से 5 तक कार्य 1"', placeholder: 'कार्य का वर्णन करें...', parse: 'पार्स', parsing: 'पार्सिंग...', jobNotFound: 'कार्य नहीं मिला', unrecognized: 'पहचाना नहीं गया' }, header: '{date} के लिए {title}', addTitle: 'जोड़ें', editTitle: 'संपादित करें', job: 'कार्य', entryType: 'प्रकार', types: { timeRange: 'समय सीमा', duration: 'अवधि', status: 'स्थिति' }, startTime: 'प्रारंभ', endTime: 'समाप्त', duration: 'अवधि (घंटे)', status: 'स्थिति', selectJob: 'कार्य चुनें', selectJobError: 'कार्य चुनें', addButton: 'जोड़ें', saveButton: 'सहेजें' },
     statuses: { worked: 'कार्य किया', off: 'छुट्टी', holiday: 'अवकाश', sick: 'बीमारी' },
-    auth: { loading: 'लॉगिन हो रहा है...', title: 'स्वागत है', subtitleSignIn: 'साइन इन करें', subtitleSignUp: 'साइन अप करें', emailLabel: 'ईमेल', passwordLabel: 'पासवर्ड', submitting: 'प्रतीक्षा करें...', signIn: 'साइन इन', signUp: 'साइन अप', switchToSignUp: 'खाता नहीं है?', switchToSignIn: 'खाता है?', signOut: 'साइन आउट', checkEmail: 'ईमेल जांचें', heroEyebrow: 'काम के घंटे ट्रैकर', heroHeadline: 'समय प्रबंधित करें', heroSubheadline: 'घंटे और कमाई ट्रैक करें', heroCta: 'मुफ्त खाता', features: { tracking: { title: 'त्वरित ट्रैकिंग', description: 'तेजी से लॉग करें' }, schedule: { title: 'स्मार्ट अनुसूची', description: 'सप्ताह की योजना बनाएं' }, sync: { title: 'क्लाउड सिंक', description: 'Web, iOS, Android' } }, downloadTitle: 'मोबाइल ऐप्स जल्द आ रहे हैं', downloadSubtitle: 'डाउनलोड करने के लिए स्कैन करें', downloadPlaceholder: 'पूर्वावलोकन' }
+    auth: { loading: 'लॉगिन हो रहा है...', title: 'स्वागत है', subtitleSignIn: 'साइन इन करें', subtitleSignUp: 'साइन अप करें', emailLabel: 'ईमेल', passwordLabel: 'पासवर्ड', submitting: 'प्रतीक्षा करें...', signIn: 'साइन इन', signUp: 'साइन अप', switchToSignUp: 'खाता नहीं है?', switchToSignIn: 'खाता है?', signOut: 'साइन आउट', checkEmail: 'ईमेल जांचें', heroEyebrow: 'काम के घंटे ट्रैकर', heroHeadline: 'समय प्रबंधित करें', heroSubheadline: 'घंटे और कमाई ट्रैक करें', heroCta: 'मुफ्त खाता',
+      whatTitle: 'पहले ही दिन आपको क्या मिलता है',
+      what: {
+        planner: {
+          title: 'दृश्य शिफ्ट प्लानर',
+          description: 'एक कैलेंडर सभी काम एक साथ दिखाता है ताकि आप जान सकें समय कहाँ जा रहा है।'
+        },
+        capture: {
+          title: 'बिना रुकावट प्रविष्टि',
+          description: 'टैप करें, ड्रैग करें या सामान्य भाषा में लिखें और AI उसे संरचित प्रविष्टियों में बदल दे।'
+        },
+        earnings: {
+          title: 'स्वचालित कमाई गणना',
+          description: 'घंटेवार दरें, मुद्राएँ और ओवरटाइम हर काम के लिए तुरंत जोड़े जाते हैं।'
+        },
+        export: {
+          title: 'Excel में निर्यात',
+          description: 'प्रत्येक काम या संयुक्त रूप से आसानी से Excel में निर्यात करें; कई विकल्प उपलब्ध हैं।'
+        },
+      },
+      features: { tracking: { title: 'त्वरित ट्रैकिंग', description: 'तेजी से लॉग करें' }, schedule: { title: 'स्मार्ट अनुसूची', description: 'सप्ताह की योजना बनाएं' }, sync: { title: 'क्लाउड सिंक', description: 'Web, iOS, Android' } }, downloadTitle: 'मोबाइल ऐप्स जल्द आ रहे हैं', downloadSubtitle: 'डाउनलोड करने के लिए स्कैन करें', downloadPlaceholder: 'पूर्वावलोकन' }
   },
   th: {
     app: { title: 'ตัวติดตามชั่วโมงทำงาน', addEntryAria: 'เพิ่มรายการใหม่' },
@@ -807,7 +1088,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'จัดการงาน', schedule: 'ตารางงาน', rateDisplay: '{amount} / ชั่วโมง', addTitle: 'เพิ่มงานใหม่', nameLabel: 'ชื่อ', rateLabel: 'อัตรา', currencyLabel: 'สกุลเงิน', addButton: 'เพิ่ม' }, notifications: { title: 'การแจ้งเตือน', reminderLabel: 'เตือนความจำรายวัน', reminderNote: 'เตือนเวลา {time}', permissionDenied: 'ถูกบล็อก', notSupported: 'ไม่รองรับ', updateError: 'ข้อผิดพลาด' }, language: { title: 'ภาษา', label: 'ภาษาแอป' }, theme: { toggle: 'เปลี่ยนธีม', switchToDark: 'โหมดมืด', switchToLight: 'โหมดสว่าง', dark: 'มืด', light: 'สว่าง' } },
     entryModal: { ai: { title: 'การป้อนข้อมูลอัจฉริยะ AI', examples: 'ตัวอย่าง: "ทำงาน 1 เมื่อวาน 9 โมงถึง 5 โมงเย็น"', placeholder: 'อธิบายงาน...', parse: 'วิเคราะห์', parsing: 'กำลังวิเคราะห์...', jobNotFound: 'ไม่พบงาน', unrecognized: 'ไม่รู้จัก' }, header: '{title} สำหรับ {date}', addTitle: 'เพิ่ม', editTitle: 'แก้ไข', job: 'งาน', entryType: 'ประเภท', types: { timeRange: 'ช่วงเวลา', duration: 'ระยะเวลา', status: 'สถานะ' }, startTime: 'เริ่ม', endTime: 'สิ้นสุด', duration: 'ระยะเวลา (ชม.)', status: 'สถานะ', selectJob: 'เลือกงาน', selectJobError: 'เลือกงาน', addButton: 'เพิ่ม', saveButton: 'บันทึก' },
     statuses: { worked: 'ทำงาน', off: 'หยุด', holiday: 'วันหยุด', sick: 'ป่วย' },
-    auth: { loading: 'กำลังเข้าสู่ระบบ...', title: 'ยินดีต้อนรับ', subtitleSignIn: 'เข้าสู่ระบบ', subtitleSignUp: 'ลงทะเบียน', emailLabel: 'อีเมล', passwordLabel: 'รหัสผ่าน', submitting: 'กรุณารอ...', signIn: 'เข้าสู่ระบบ', signUp: 'ลงทะเบียน', switchToSignUp: 'ไม่มีบัญชี?', switchToSignIn: 'มีบัญชีแล้ว?', signOut: 'ออกจากระบบ', checkEmail: 'ตรวจสอบอีเมล', heroEyebrow: 'ตัวติดตามชั่วโมงทำงาน', heroHeadline: 'จัดการเวลาของคุณ', heroSubheadline: 'ติดตามชั่วโมงและรายได้', heroCta: 'บัญชีฟรี', features: { tracking: { title: 'ติดตามทันที', description: 'บันทึกรวดเร็ว' }, schedule: { title: 'ตารางงานอัจฉริยะ', description: 'วางแผนสัปดาห์' }, sync: { title: 'ซิงค์คลาวด์', description: 'Web, iOS, Android' } }, downloadTitle: 'แอปมือถือเร็วๆ นี้', downloadSubtitle: 'สแกนเพื่อดาวน์โหลด', downloadPlaceholder: 'ตัวอย่าง' }
+    auth: { loading: 'กำลังเข้าสู่ระบบ...', title: 'ยินดีต้อนรับ', subtitleSignIn: 'เข้าสู่ระบบ', subtitleSignUp: 'ลงทะเบียน', emailLabel: 'อีเมล', passwordLabel: 'รหัสผ่าน', submitting: 'กรุณารอ...', signIn: 'เข้าสู่ระบบ', signUp: 'ลงทะเบียน', switchToSignUp: 'ไม่มีบัญชี?', switchToSignIn: 'มีบัญชีแล้ว?', signOut: 'ออกจากระบบ', checkEmail: 'ตรวจสอบอีเมล', heroEyebrow: 'ตัวติดตามชั่วโมงทำงาน', heroHeadline: 'จัดการเวลาของคุณ', heroSubheadline: 'ติดตามชั่วโมงและรายได้', heroCta: 'บัญชีฟรี',
+      whatTitle: 'สิ่งที่คุณได้ตั้งแต่วันแรก',
+      what: {
+        planner: {
+          title: 'ตัววางแผนกะงานแบบเห็นภาพ',
+          description: 'ปฏิทินแสดงทุกงานพร้อมกันเพื่อให้คุณรู้ว่าเวลาถูกใช้ไปกับอะไรเสมอ.'
+        },
+        capture: {
+          title: 'บันทึกแบบไร้แรงเสียดทาน',
+          description: 'แตะ ลาก หรือพิมพ์ภาษาธรรมชาติแล้วให้ AI แปลงเป็นรายการที่มีโครงสร้าง.'
+        },
+        earnings: {
+          title: 'คำนวณรายได้อัตโนมัติ',
+          description: 'อัตรารายชั่วโมง สกุลเงิน และโอทีถูกสรุปทันทีแยกตามงาน.'
+        },
+        export: {
+          title: 'ส่งออกเป็น Excel',
+          description: 'ส่งออกเป็น Excel ได้ง่าย ทั้งรายงานเป็นงานหรือรวมกัน พร้อมหลายตัวเลือก.'
+        },
+      },
+      features: { tracking: { title: 'ติดตามทันที', description: 'บันทึกรวดเร็ว' }, schedule: { title: 'ตารางงานอัจฉริยะ', description: 'วางแผนสัปดาห์' }, sync: { title: 'ซิงค์คลาวด์', description: 'Web, iOS, Android' } }, downloadTitle: 'แอปมือถือเร็วๆ นี้', downloadSubtitle: 'สแกนเพื่อดาวน์โหลด', downloadPlaceholder: 'ตัวอย่าง' }
   },
   id: {
     app: { title: 'Pelacak Jam Kerja', addEntryAria: 'Tambah entri baru' },
@@ -818,7 +1119,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Kelola Pekerjaan', schedule: 'Jadwal', rateDisplay: '{amount} / jam', addTitle: 'Tambah Pekerjaan Baru', nameLabel: 'Nama', rateLabel: 'Tarif', currencyLabel: 'Mata Uang', addButton: 'Tambah' }, notifications: { title: 'Notifikasi', reminderLabel: 'Pengingat Harian', reminderNote: 'Pengingat pada {time}.', permissionDenied: 'Diblokir.', notSupported: 'Tidak didukung.', updateError: 'Kesalahan.' }, language: { title: 'Bahasa', label: 'Bahasa Aplikasi' }, theme: { toggle: 'Ganti Tema', switchToDark: 'Mode Gelap', switchToLight: 'Mode Terang', dark: 'Gelap', light: 'Terang' } },
     entryModal: { ai: { title: 'Input Cerdas AI', examples: 'Cth: "Kerja di Job 1 dari jam 9 sampai 5 kemarin"', placeholder: 'Jelaskan pekerjaan...', parse: 'Urai', parsing: 'Mengurai...', jobNotFound: 'Pekerjaan tidak ditemukan', unrecognized: 'Tidak dikenali' }, header: '{title} untuk {date}', addTitle: 'Tambah', editTitle: 'Ubah', job: 'Pekerjaan', entryType: 'Tipe', types: { timeRange: 'Rentang Waktu', duration: 'Durasi', status: 'Status' }, startTime: 'Mulai', endTime: 'Selesai', duration: 'Durasi (jam)', status: 'Status', selectJob: 'Pilih pekerjaan', selectJobError: 'Pilih pekerjaan', addButton: 'Tambah', saveButton: 'Simpan' },
     statuses: { worked: 'Kerja', off: 'Libur', holiday: 'Cuti', sick: 'Sakit' },
-    auth: { loading: 'Masuk...', title: 'Selamat Datang', subtitleSignIn: 'Masuk', subtitleSignUp: 'Daftar', emailLabel: 'Email', passwordLabel: 'Kata Sandi', submitting: 'Tunggu...', signIn: 'Masuk', signUp: 'Daftar', switchToSignUp: 'Belum punya akun?', switchToSignIn: 'Sudah punya akun?', signOut: 'Keluar', checkEmail: 'Periksa email', heroEyebrow: 'Pelacak Jam Kerja', heroHeadline: 'Kuasai Waktumu', heroSubheadline: 'Lacak jam dan pendapatan', heroCta: 'Akun Gratis', features: { tracking: { title: 'Pelacakan Instan', description: 'Catat cepat' }, schedule: { title: 'Jadwal Cerdas', description: 'Rencanakan minggu' }, sync: { title: 'Sinkronisasi Cloud', description: 'Web, iOS, Android' } }, downloadTitle: 'Aplikasi Seluler Segera', downloadSubtitle: 'Pindai untuk unduh', downloadPlaceholder: 'Pratinjau' }
+    auth: { loading: 'Masuk...', title: 'Selamat Datang', subtitleSignIn: 'Masuk', subtitleSignUp: 'Daftar', emailLabel: 'Email', passwordLabel: 'Kata Sandi', submitting: 'Tunggu...', signIn: 'Masuk', signUp: 'Daftar', switchToSignUp: 'Belum punya akun?', switchToSignIn: 'Sudah punya akun?', signOut: 'Keluar', checkEmail: 'Periksa email', heroEyebrow: 'Pelacak Jam Kerja', heroHeadline: 'Kuasai Waktumu', heroSubheadline: 'Lacak jam dan pendapatan', heroCta: 'Akun Gratis',
+      whatTitle: 'Yang kamu dapat sejak hari pertama',
+      what: {
+        planner: {
+          title: 'Perencana shift visual',
+          description: 'Kalender menampilkan semua pekerjaan sekaligus agar kamu tahu ke mana waktu terpakai.'
+        },
+        capture: {
+          title: 'Pencatatan tanpa hambatan',
+          description: 'Ketuk, seret, atau ketik dengan bahasa alami dan biarkan AI membuat entri terstruktur.'
+        },
+        earnings: {
+          title: 'Perhitungan pendapatan otomatis',
+          description: 'Tarif per jam, mata uang, dan lembur dijumlahkan seketika untuk tiap pekerjaan.'
+        },
+        export: {
+          title: 'Ekspor ke Excel',
+          description: 'Mudah ekspor ke Excel per pekerjaan atau gabungan dengan banyak opsi.'
+        },
+      },
+      features: { tracking: { title: 'Pelacakan Instan', description: 'Catat cepat' }, schedule: { title: 'Jadwal Cerdas', description: 'Rencanakan minggu' }, sync: { title: 'Sinkronisasi Cloud', description: 'Web, iOS, Android' } }, downloadTitle: 'Aplikasi Seluler Segera', downloadSubtitle: 'Pindai untuk unduh', downloadPlaceholder: 'Pratinjau' }
   },
   ar: {
     app: { title: 'متتبع ساعات العمل', addEntryAria: 'إضافة إدخال جديد' },
@@ -829,7 +1150,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'إدارة الوظائف', schedule: 'الجدول', rateDisplay: '{amount} / ساعة', addTitle: 'إضافة وظيفة جديدة', nameLabel: 'الاسم', rateLabel: 'المعدل', currencyLabel: 'العملة', addButton: 'إضافة' }, notifications: { title: 'الإشعارات', reminderLabel: 'تذكير يومي', reminderNote: 'تذكير في {time}.', permissionDenied: 'محظور.', notSupported: 'غير مدعوم.', updateError: 'خطأ.' }, language: { title: 'اللغة', label: 'لغة التطبيق' }, theme: { toggle: 'تغيير السمة', switchToDark: 'الوضع الداكن', switchToLight: 'الوضع الفاتح', dark: 'داكن', light: 'فاتح' } },
     entryModal: { ai: { title: 'إدخال ذكي بالذكاء الاصطناعي', examples: 'مثال: "عملت في وظيفة 1 من 9 إلى 5 أمس"', placeholder: 'صف عملك...', parse: 'تحليل', parsing: 'جاري التحليل...', jobNotFound: 'الوظيفة غير موجودة', unrecognized: 'لم يتم التعرف عليه' }, header: '{title} لـ {date}', addTitle: 'إضافة', editTitle: 'تعديل', job: 'الوظيفة', entryType: 'النوع', types: { timeRange: 'نطاق زمني', duration: 'مدة', status: 'حالة' }, startTime: 'البدء', endTime: 'الانتهاء', duration: 'المدة (ساعة)', status: 'الحالة', selectJob: 'اختر وظيفة', selectJobError: 'اختر وظيفة', addButton: 'إضافة', saveButton: 'حفظ' },
     statuses: { worked: 'عمل', off: 'عطلة', holiday: 'إجازة', sick: 'مرضي' },
-    auth: { loading: 'جاري الدخول...', title: 'مرحباً', subtitleSignIn: 'دخول', subtitleSignUp: 'تسجيل', emailLabel: 'البريد', passwordLabel: 'كلمة المرور', submitting: 'انتظر...', signIn: 'دخول', signUp: 'تسجيل', switchToSignUp: 'لا يوجد حساب؟', switchToSignIn: 'لديك حساب؟', signOut: 'خروج', checkEmail: 'افحص بريدك', heroEyebrow: 'متتبع ساعات العمل', heroHeadline: 'تحكم في وقتك', heroSubheadline: 'تتبع الساعات والأرباح', heroCta: 'حساب مجاني', features: { tracking: { title: 'تتبع فوري', description: 'سجل بسرعة' }, schedule: { title: 'جدول ذكي', description: 'خطط لأسبوعك' }, sync: { title: 'مزامنة سحابية', description: 'ويب، iOS، أندرويد' } }, downloadTitle: 'تطبيقات الجوال قريباً', downloadSubtitle: 'امسح للتنزيل', downloadPlaceholder: 'معاينة' }
+    auth: { loading: 'جاري الدخول...', title: 'مرحباً', subtitleSignIn: 'دخول', subtitleSignUp: 'تسجيل', emailLabel: 'البريد', passwordLabel: 'كلمة المرور', submitting: 'انتظر...', signIn: 'دخول', signUp: 'تسجيل', switchToSignUp: 'لا يوجد حساب؟', switchToSignIn: 'لديك حساب؟', signOut: 'خروج', checkEmail: 'افحص بريدك', heroEyebrow: 'متتبع ساعات العمل', heroHeadline: 'تحكم في وقتك', heroSubheadline: 'تتبع الساعات والأرباح', heroCta: 'حساب مجاني',
+      whatTitle: 'ما الذي تحصل عليه من اليوم الأول',
+      what: {
+        planner: {
+          title: 'مخطط مناوبات مرئي',
+          description: 'تقويم يعرض جميع الوظائف في آن واحد لتعرف دائماً أين يذهب وقتك.'
+        },
+        capture: {
+          title: 'إدخال بلا احتكاك',
+          description: 'انقر أو اسحب أو اكتب بلغة طبيعية ودع الذكاء الاصطناعي يحولها إلى سجلات منظمة.'
+        },
+        earnings: {
+          title: 'حساب الأرباح تلقائياً',
+          description: 'يتم جمع الأجرة بالساعة والعملات وساعات العمل الإضافية فوراً لكل وظيفة.'
+        },
+        export: {
+          title: 'تصدير إلى Excel',
+          description: 'صدّر بسهولة إلى Excel لكل وظيفة أو بشكل مجمع مع عدة خيارات متاحة.'
+        },
+      },
+      features: { tracking: { title: 'تتبع فوري', description: 'سجل بسرعة' }, schedule: { title: 'جدول ذكي', description: 'خطط لأسبوعك' }, sync: { title: 'مزامنة سحابية', description: 'ويب، iOS، أندرويد' } }, downloadTitle: 'تطبيقات الجوال قريباً', downloadSubtitle: 'امسح للتنزيل', downloadPlaceholder: 'معاينة' }
   },
   sv: {
     app: { title: 'Arbetstidsspårare', addEntryAria: 'Lägg till post' },
@@ -840,7 +1181,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Hantera jobb', schedule: 'Schema', rateDisplay: '{amount} / timme', addTitle: 'Nytt jobb', nameLabel: 'Namn', rateLabel: 'Timlön', currencyLabel: 'Valuta', addButton: 'Lägg till' }, notifications: { title: 'Aviseringar', reminderLabel: 'Daglig påminnelse', reminderNote: 'Påminnelse kl {time}.', permissionDenied: 'Blockerad.', notSupported: 'Stöds ej.', updateError: 'Fel.' }, language: { title: 'Språk', label: 'Appspråk' }, theme: { toggle: 'Växla tema', switchToDark: 'Mörkt läge', switchToLight: 'Ljust läge', dark: 'Mörkt', light: 'Ljust' } },
     entryModal: { ai: { title: 'Smart inmatning (AI)', examples: 'T.ex: "Jobbade på Jobb 1 från 9 till 17 igår"', placeholder: 'Beskriv arbetet...', parse: 'Analysera', parsing: 'Analyserar...', jobNotFound: 'Jobb hittades inte', unrecognized: 'Okänt' }, header: '{title} för {date}', addTitle: 'Lägg till', editTitle: 'Redigera', job: 'Jobb', entryType: 'Typ', types: { timeRange: 'Tidsintervall', duration: 'Varaktighet', status: 'Status' }, startTime: 'Start', endTime: 'Slut', duration: 'Tid (h)', status: 'Status', selectJob: 'Välj jobb', selectJobError: 'Välj ett jobb', addButton: 'Lägg till', saveButton: 'Spara' },
     statuses: { worked: 'Arbetat', off: 'Ledig', holiday: 'Semester', sick: 'Sjuk' },
-    auth: { loading: 'Loggar in...', title: 'Välkommen', subtitleSignIn: 'Logga in', subtitleSignUp: 'Registrera', emailLabel: 'E-post', passwordLabel: 'Lösenord', submitting: 'Vänta...', signIn: 'Logga in', signUp: 'Registrera', switchToSignUp: 'Inget konto?', switchToSignIn: 'Har konto?', signOut: 'Logga ut', checkEmail: 'Kolla e-post', heroEyebrow: 'Arbetstidsspårare', heroHeadline: 'Äg din tid', heroSubheadline: 'Spåra timmar och inkomst', heroCta: 'Gratis konto', features: { tracking: { title: 'Direkt spårning', description: 'Logga snabbt' }, schedule: { title: 'Smart schema', description: 'Planera veckan' }, sync: { title: 'Molnsynk', description: 'Webb, iOS, Android' } }, downloadTitle: 'Mobilappar snart', downloadSubtitle: 'Skanna för att ladda ner', downloadPlaceholder: 'Förhandsvisning' }
+    auth: { loading: 'Loggar in...', title: 'Välkommen', subtitleSignIn: 'Logga in', subtitleSignUp: 'Registrera', emailLabel: 'E-post', passwordLabel: 'Lösenord', submitting: 'Vänta...', signIn: 'Logga in', signUp: 'Registrera', switchToSignUp: 'Inget konto?', switchToSignIn: 'Har konto?', signOut: 'Logga ut', checkEmail: 'Kolla e-post', heroEyebrow: 'Arbetstidsspårare', heroHeadline: 'Äg din tid', heroSubheadline: 'Spåra timmar och inkomst', heroCta: 'Gratis konto',
+      whatTitle: 'Det här får du redan dag ett',
+      what: {
+        planner: {
+          title: 'Visuell skiftsplanerare',
+          description: 'En kalender visar alla jobb samtidigt så att du vet vart tiden tar vägen.'
+        },
+        capture: {
+          title: 'Friktionsfri registrering',
+          description: 'Tryck, dra eller skriv på naturligt språk och låt AI göra strukturerade poster.'
+        },
+        earnings: {
+          title: 'Automatisk intäktsberäkning',
+          description: 'Timpriser, valutor och övertid summeras direkt per jobb.'
+        },
+        export: {
+          title: 'Exportera till Excel',
+          description: 'Exportera enkelt till Excel per jobb eller samlat, med flera alternativ.'
+        },
+      },
+      features: { tracking: { title: 'Direkt spårning', description: 'Logga snabbt' }, schedule: { title: 'Smart schema', description: 'Planera veckan' }, sync: { title: 'Molnsynk', description: 'Webb, iOS, Android' } }, downloadTitle: 'Mobilappar snart', downloadSubtitle: 'Skanna för att ladda ner', downloadPlaceholder: 'Förhandsvisning' }
   },
   fi: {
     app: { title: 'Työajanseuranta', addEntryAria: 'Lisää merkintä' },
@@ -851,7 +1212,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Hallitse töitä', schedule: 'Aikataulu', rateDisplay: '{amount} / tunti', addTitle: 'Uusi työ', nameLabel: 'Nimi', rateLabel: 'Tuntipalkka', currencyLabel: 'Valuutta', addButton: 'Lisää' }, notifications: { title: 'Ilmoitukset', reminderLabel: 'Päivittäinen muistutus', reminderNote: 'Muistutus klo {time}.', permissionDenied: 'Estetty.', notSupported: 'Ei tuettu.', updateError: 'Virhe.' }, language: { title: 'Kieli', label: 'Sovelluksen kieli' }, theme: { toggle: 'Vaihda teemaa', switchToDark: 'Tumma tila', switchToLight: 'Vaalea tila', dark: 'Tumma', light: 'Vaalea' } },
     entryModal: { ai: { title: 'Älykäs syöttö (AI)', examples: 'Esim: "Työskentelin työssä 1 klo 9-17 eilen"', placeholder: 'Kuvaile työtä...', parse: 'Jäsennä', parsing: 'Jäsennetään...', jobNotFound: 'Työtä ei löytynyt', unrecognized: 'Ei tunnistettu' }, header: '{title} {date}', addTitle: 'Lisää', editTitle: 'Muokkaa', job: 'Työ', entryType: 'Tyyppi', types: { timeRange: 'Aikaväli', duration: 'Kesto', status: 'Tila' }, startTime: 'Alku', endTime: 'Loppu', duration: 'Kesto (h)', status: 'Tila', selectJob: 'Valitse työ', selectJobError: 'Valitse työ', addButton: 'Lisää', saveButton: 'Tallenna' },
     statuses: { worked: 'Työssä', off: 'Vapaa', holiday: 'Loma', sick: 'Sairas' },
-    auth: { loading: 'Kirjaudutaan...', title: 'Tervetuloa', subtitleSignIn: 'Kirjaudu', subtitleSignUp: 'Rekisteröidy', emailLabel: 'Sähköposti', passwordLabel: 'Salasana', submitting: 'Odota...', signIn: 'Kirjaudu', signUp: 'Rekisteröidy', switchToSignUp: 'Ei tiliä?', switchToSignIn: 'Onko tili?', signOut: 'Kirjaudu ulos', checkEmail: 'Tarkista sähköposti', heroEyebrow: 'Työajanseuranta', heroHeadline: 'Hallitse aikaasi', heroSubheadline: 'Seuraa tunteja ja tuloja', heroCta: 'Ilmainen tili', features: { tracking: { title: 'Välitön seuranta', description: 'Kirjaa nopeasti' }, schedule: { title: 'Älykäs aikataulu', description: 'Suunnittele viikko' }, sync: { title: 'Pilvisynkronointi', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobiilisovellukset pian', downloadSubtitle: 'Skannaa ladataksesi', downloadPlaceholder: 'Esikatselu' }
+    auth: { loading: 'Kirjaudutaan...', title: 'Tervetuloa', subtitleSignIn: 'Kirjaudu', subtitleSignUp: 'Rekisteröidy', emailLabel: 'Sähköposti', passwordLabel: 'Salasana', submitting: 'Odota...', signIn: 'Kirjaudu', signUp: 'Rekisteröidy', switchToSignUp: 'Ei tiliä?', switchToSignIn: 'Onko tili?', signOut: 'Kirjaudu ulos', checkEmail: 'Tarkista sähköposti', heroEyebrow: 'Työajanseuranta', heroHeadline: 'Hallitse aikaasi', heroSubheadline: 'Seuraa tunteja ja tuloja', heroCta: 'Ilmainen tili',
+      whatTitle: 'Tämän saat käyttöösi heti ensimmäisenä päivänä',
+      what: {
+        planner: {
+          title: 'Visuaalinen vuorosuunnittelija',
+          description: 'Kalenteri näyttää kaikki työt kerralla, joten tiedät aina mihin aika kuluu.'
+        },
+        capture: {
+          title: 'Kitkaton kirjaus',
+          description: 'Napauta, vedä tai kirjoita luonnollista kieltä ja anna tekoälyn muodostaa rakenteiset merkinnät.'
+        },
+        earnings: {
+          title: 'Automaattinen ansiolaskenta',
+          description: 'Tuntihinnat, valuutat ja ylityöt lasketaan hetkessä joka työlle.'
+        },
+        export: {
+          title: 'Vie Exceliin',
+          description: 'Vie helposti Exceliin työkohtaisesti tai yhdistettynä – vaihtoehtoja on useita.'
+        },
+      },
+      features: { tracking: { title: 'Välitön seuranta', description: 'Kirjaa nopeasti' }, schedule: { title: 'Älykäs aikataulu', description: 'Suunnittele viikko' }, sync: { title: 'Pilvisynkronointi', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobiilisovellukset pian', downloadSubtitle: 'Skannaa ladataksesi', downloadPlaceholder: 'Esikatselu' }
   },
   da: {
     app: { title: 'Arbejdstidsregistrering', addEntryAria: 'Tilføj post' },
@@ -862,7 +1243,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Administrer jobs', schedule: 'Skema', rateDisplay: '{amount} / time', addTitle: 'Nyt job', nameLabel: 'Navn', rateLabel: 'Timeløn', currencyLabel: 'Valuta', addButton: 'Tilføj' }, notifications: { title: 'Notifikationer', reminderLabel: 'Daglig påmindelse', reminderNote: 'Påmindelse kl. {time}.', permissionDenied: 'Blokeret.', notSupported: 'Ikke understøttet.', updateError: 'Fejl.' }, language: { title: 'Sprog', label: 'App sprog' }, theme: { toggle: 'Skift tema', switchToDark: 'Mørk tilstand', switchToLight: 'Lys tilstand', dark: 'Mørk', light: 'Lys' } },
     entryModal: { ai: { title: 'Smart input (AI)', examples: 'F.eks.: "Arbejdede på Job 1 fra 9 til 17 i går"', placeholder: 'Beskriv arbejdet...', parse: 'Analyser', parsing: 'Analyserer...', jobNotFound: 'Job ikke fundet', unrecognized: 'Ikke genkendt' }, header: '{title} for {date}', addTitle: 'Tilføj', editTitle: 'Rediger', job: 'Job', entryType: 'Type', types: { timeRange: 'Tidsrum', duration: 'Varighed', status: 'Status' }, startTime: 'Start', endTime: 'Slut', duration: 'Tid (t)', status: 'Status', selectJob: 'Vælg job', selectJobError: 'Vælg et job', addButton: 'Tilføj', saveButton: 'Gem' },
     statuses: { worked: 'Arbejdet', off: 'Fri', holiday: 'Ferie', sick: 'Syg' },
-    auth: { loading: 'Logger ind...', title: 'Velkommen', subtitleSignIn: 'Log ind', subtitleSignUp: 'Tilmeld', emailLabel: 'Email', passwordLabel: 'Adgangskode', submitting: 'Vent venligst...', signIn: 'Log ind', signUp: 'Tilmeld', switchToSignUp: 'Ingen konto?', switchToSignIn: 'Har konto?', signOut: 'Log ud', checkEmail: 'Tjek email', heroEyebrow: 'Arbejdstidsregistrering', heroHeadline: 'Styr din tid', heroSubheadline: 'Spor timer og indtjening', heroCta: 'Gratis konto', features: { tracking: { title: 'Direkte sporing', description: 'Log hurtigt' }, schedule: { title: 'Smart skema', description: 'Planlæg ugen' }, sync: { title: 'Cloud sync', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobilapps snart', downloadSubtitle: 'Scan for at downloade', downloadPlaceholder: 'Forhåndsvisning' }
+    auth: { loading: 'Logger ind...', title: 'Velkommen', subtitleSignIn: 'Log ind', subtitleSignUp: 'Tilmeld', emailLabel: 'Email', passwordLabel: 'Adgangskode', submitting: 'Vent venligst...', signIn: 'Log ind', signUp: 'Tilmeld', switchToSignUp: 'Ingen konto?', switchToSignIn: 'Har konto?', signOut: 'Log ud', checkEmail: 'Tjek email', heroEyebrow: 'Arbejdstidsregistrering', heroHeadline: 'Styr din tid', heroSubheadline: 'Spor timer og indtjening', heroCta: 'Gratis konto',
+      whatTitle: 'Det får du allerede på dag ét',
+      what: {
+        planner: {
+          title: 'Visuel vagtplanlægger',
+          description: 'En kalender viser alle jobs på én gang, så du altid ved hvor tiden forsvinder.'
+        },
+        capture: {
+          title: 'Registrering uden friktion',
+          description: 'Tryk, træk eller skriv på naturligt sprog, og lad AI lave strukturerede poster.'
+        },
+        earnings: {
+          title: 'Automatisk lønberegning',
+          description: 'Timeløn, valuta og overarbejde samles med det samme for hvert job.'
+        },
+        export: {
+          title: 'Eksportér til Excel',
+          description: 'Eksportér nemt til Excel pr. job eller samlet med flere muligheder.'
+        },
+      },
+      features: { tracking: { title: 'Direkte sporing', description: 'Log hurtigt' }, schedule: { title: 'Smart skema', description: 'Planlæg ugen' }, sync: { title: 'Cloud sync', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobilapps snart', downloadSubtitle: 'Scan for at downloade', downloadPlaceholder: 'Forhåndsvisning' }
   },
   no: {
     app: { title: 'Arbeidstidssporing', addEntryAria: 'Legg til oppføring' },
@@ -873,7 +1274,27 @@ const translations: Record<Language, TranslationRecord> = {
     settings: { jobs: { title: 'Administrer jobber', schedule: 'Timeplan', rateDisplay: '{amount} / time', addTitle: 'Ny jobb', nameLabel: 'Navn', rateLabel: 'Timelønn', currencyLabel: 'Valuta', addButton: 'Legg til' }, notifications: { title: 'Varsler', reminderLabel: 'Daglig påminnelse', reminderNote: 'Påminnelse kl {time}.', permissionDenied: 'Blokkert.', notSupported: 'Ikke støttet.', updateError: 'Feil.' }, language: { title: 'Språk', label: 'Appspråk' }, theme: { toggle: 'Bytt tema', switchToDark: 'Mørk modus', switchToLight: 'Lys modus', dark: 'Mørk', light: 'Lys' } },
     entryModal: { ai: { title: 'Smart inndata (AI)', examples: 'F.eks: "Jobbet på Jobb 1 fra 9 til 17 i går"', placeholder: 'Beskriv arbeidet...', parse: 'Analyser', parsing: 'Analyserer...', jobNotFound: 'Jobb ikke funnet', unrecognized: 'Ikke gjenkjent' }, header: '{title} for {date}', addTitle: 'Legg til', editTitle: 'Rediger', job: 'Jobb', entryType: 'Type', types: { timeRange: 'Tidsrom', duration: 'Varighet', status: 'Status' }, startTime: 'Start', endTime: 'Slutt', duration: 'Tid (t)', status: 'Status', selectJob: 'Velg jobb', selectJobError: 'Velg en jobb', addButton: 'Legg til', saveButton: 'Lagre' },
     statuses: { worked: 'Jobbet', off: 'Fri', holiday: 'Ferie', sick: 'Syk' },
-    auth: { loading: 'Logger inn...', title: 'Velkommen', subtitleSignIn: 'Logg inn', subtitleSignUp: 'Registrer', emailLabel: 'E-post', passwordLabel: 'Passord', submitting: 'Vent...', signIn: 'Logg inn', signUp: 'Registrer', switchToSignUp: 'Ingen konto?', switchToSignIn: 'Har konto?', signOut: 'Logg ut', checkEmail: 'Sjekk e-post', heroEyebrow: 'Arbeidstidssporing', heroHeadline: 'Ta kontroll over tiden', heroSubheadline: 'Spor timer og inntjening', heroCta: 'Gratis konto', features: { tracking: { title: 'Direkte sporing', description: 'Logg raskt' }, schedule: { title: 'Smart timeplan', description: 'Planlegg uken' }, sync: { title: 'Skysynkronisering', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobilapper snart', downloadSubtitle: 'Skann for å laste ned', downloadPlaceholder: 'Forhåndsvisning' }
+    auth: { loading: 'Logger inn...', title: 'Velkommen', subtitleSignIn: 'Logg inn', subtitleSignUp: 'Registrer', emailLabel: 'E-post', passwordLabel: 'Passord', submitting: 'Vent...', signIn: 'Logg inn', signUp: 'Registrer', switchToSignUp: 'Ingen konto?', switchToSignIn: 'Har konto?', signOut: 'Logg ut', checkEmail: 'Sjekk e-post', heroEyebrow: 'Arbeidstidssporing', heroHeadline: 'Ta kontroll over tiden', heroSubheadline: 'Spor timer og inntjening', heroCta: 'Gratis konto',
+      whatTitle: 'Dette får du fra dag én',
+      what: {
+        planner: {
+          title: 'Visuell vaktplan',
+          description: 'En kalender viser alle jobber samtidig, så du alltid vet hvor tiden går.'
+        },
+        capture: {
+          title: 'Sømløs registrering',
+          description: 'Trykk, dra eller skriv på naturlig språk, og la KI gjøre det til strukturerte føringer.'
+        },
+        earnings: {
+          title: 'Automatisk inntektsberegning',
+          description: 'Timesatser, valuta og overtid summeres umiddelbart per jobb.'
+        },
+        export: {
+          title: 'Eksporter til Excel',
+          description: 'Eksporter enkelt til Excel per jobb eller samlet, med flere valg.'
+        },
+      },
+      features: { tracking: { title: 'Direkte sporing', description: 'Logg raskt' }, schedule: { title: 'Smart timeplan', description: 'Planlegg uken' }, sync: { title: 'Skysynkronisering', description: 'Web, iOS, Android' } }, downloadTitle: 'Mobilapper snart', downloadSubtitle: 'Skann for å laste ned', downloadPlaceholder: 'Forhåndsvisning' }
   },
 };
 

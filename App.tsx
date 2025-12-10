@@ -4,6 +4,7 @@ import { CalendarView } from './components/CalendarView';
 import { DashboardView } from './components/DashboardView';
 import { SettingsView } from './components/SettingsView';
 import { AddEntryModal } from './components/AddEntryModal';
+import { AdBannerPlaceholder } from './components/AdBannerPlaceholder';
 import { useWorkLog } from './hooks/useWorkLog';
 import { CalendarIcon, ChartBarIcon, CogIcon, PlusIcon, SunIcon, MoonIcon } from './components/shared/Icons';
 import type { WorkEntry } from './types';
@@ -105,9 +106,13 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      <main className="flex-grow overflow-y-auto px-4 pt-4 pb-28 md:px-6 md:pt-6 md:pb-32 transition-colors">
+      <main className="grow overflow-y-auto px-4 pt-4 pb-20 md:px-6 md:pt-6 md:pb-28 transition-colors">
         {renderView()}
       </main>
+
+      <section className="px-4 md:px-6 py-3 pb-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] flex justify-center bg-transparent">
+        <AdBannerPlaceholder />
+      </section>
 
       {currentView === 'calendar' && (
         <div
@@ -124,7 +129,7 @@ const App: React.FC = () => {
         </div>
       )}
 
-      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-t border-t border-gray-200 dark:border-gray-700 flex justify-around py-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] min-h-[4.5rem] z-10 transition-colors">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-t border-t border-gray-200 dark:border-gray-700 flex justify-around py-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] min-h-18 z-10 transition-colors">
         <NavItem view="calendar" label={t('nav.calendar')} icon={<CalendarIcon className="h-6 w-6 mb-1" />} />
         <NavItem view="dashboard" label={t('nav.dashboard')} icon={<ChartBarIcon className="h-6 w-6 mb-1" />} />
         <NavItem view="settings" label={t('nav.settings')} icon={<CogIcon className="h-6 w-6 mb-1" />} />

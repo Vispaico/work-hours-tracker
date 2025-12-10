@@ -64,7 +64,7 @@ const AiEntry: React.FC<{ onParse: (data: any) => void, jobs: Job[] }> = ({ onPa
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder={t('entryModal.ai.placeholder')}
-          className="form-input flex-grow dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+          className="form-input grow dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
           disabled={isLoading}
         />
         <button
@@ -166,7 +166,13 @@ export const AddEntryModal: React.FC<AddEntryModalProps> = ({ isOpen, onClose, w
       <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl w-full max-w-md max-h-full flex flex-col transition-colors">
         <header className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 transition-colors">
           <h2 className="text-xl font-bold text-dark dark:text-gray-100 transition-colors">{headerText}</h2>
-          <button onClick={onClose} className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <button
+            onClick={onClose}
+            className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            aria-label={t('common.close')}
+            title={t('common.close')}
+            type="button"
+          >
             <XMarkIcon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
           </button>
         </header>

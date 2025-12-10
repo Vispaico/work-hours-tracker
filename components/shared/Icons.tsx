@@ -66,3 +66,9 @@ export const MoonIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3 7.5 7.5 0 0021 12.79z" />
   </svg>
 );
+
+export const ExcelExportIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625A3.375 3.375 0 0016.125 8.25H6.25c-1.036 0-1.875.839-1.875 1.875v7.5c0 1.036.839 1.875 1.875 1.875h9.875a3.375 3.375 0 003.375-3.375V14.25zm-6-2.25h-3a.75.75 0 000 1.5h3a.75.75 0 000-1.5zm0 3h-3a.75.75 0 000 1.5h3a.75.75 0 000-1.5zm-3 3h3a.75.75 0 000-1.5h-3a.75.75 0 000 1.5zM12 21V3m0 0l-3.75 3.75M12 3l3.75 3.75" />
+  </svg>
+);
