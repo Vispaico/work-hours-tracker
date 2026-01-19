@@ -169,19 +169,19 @@ const translations: Record<Language, TranslationRecord> = {
       signOut: 'Sign Out',
       checkEmail: 'Check your inbox to confirm your email before signing in.',
       heroEyebrow: 'Work Hours Tracker',
-      heroHeadline: 'Own your time. Work smarter.',
-      heroSubheadline: 'Log shifts, track earnings, and keep every device in sync with one beautiful workspace.',
+      heroHeadline: 'Track multiple gigs without spreadsheet headaches.',
+      heroSubheadline: 'Stop losing money to manual math. See every shift, rate, and payout in one workspace with totals you can trust.',
       heroCta: 'Create your free account',
       metrics: {
         multiJobs: {
-          label: 'Jobs logged per day',
+          label: 'Gigs tracked per day',
           value: '3+',
-          detail: 'Color-coded dots keep overlapping gigs obvious.'
+          detail: 'Color-coded dots keep overlapping shifts obvious.'
         },
         accuracy: {
-          label: 'Accuracy boost',
+          label: 'Pay accuracy',
           value: '98%',
-          detail: 'Automatic math removes spreadsheet errors.'
+          detail: 'Automated totals eliminate spreadsheet errors.'
         },
         sync: {
           label: 'Platforms covered',
@@ -189,6 +189,17 @@ const translations: Record<Language, TranslationRecord> = {
           detail: 'One sign-in, every device up to date.'
         },
       },
+      socialProofHeadline: 'Join 1,000+ freelancers tracking multiple gigs.',
+      socialProofDetail: 'Studios, contractors, and agencies trust Work Hours Tracker every week.',
+      demoLabel: 'Product tour',
+      demoDuration: '60 sec',
+      demoSubtitle: 'Watch a quick walkthrough of multi-gig tracking, auto-calculated earnings, and exports.',
+      demoFallbackTitle: 'Quick product tour',
+      demoFallbackSubtitle: 'Your demo video will play here.',
+      previewBadge: 'Preview',
+      previewNote: 'Sample data for illustration only.',
+      previewTitle: 'Calendar preview',
+      previewHeadline: 'Today',
       whatTitle: 'What you get on day one',
       what: {
         planner: {
